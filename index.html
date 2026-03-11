@@ -1,835 +1,950 @@
 <html lang="en">
+
 <head>
-  <meta charset="utf-8"/>
-  <meta content="width=device-width, initial-scale=1.0" name="viewport"/>
-  <title>
-   Rizqi Maulidi - Portfolio
-  </title>
-  <script src="https://cdn.tailwindcss.com">
-  </script>
-  <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css" rel="stylesheet"/>
-  <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&display=swap" rel="stylesheet"/>
-  <style>
-   body {
+    <meta charset="utf-8" />
+    <meta content="width=device-width, initial-scale=1.0" name="viewport" />
+    <title>
+        Rizqi Maulidi - Portfolio
+    </title>
+    <script src="https://cdn.tailwindcss.com">
+    </script>
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css" rel="stylesheet" />
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&display=swap" rel="stylesheet" />
+    <style>
+        body {
             font-family: 'Roboto', sans-serif;
-            background-color: #0f0f23;
-            color: #e2e8f0;
+            background-color: #f8fafc;
+            background-image:
+                radial-gradient(at 0% 0%, #ffffff 0%, transparent 50%),
+                radial-gradient(at 50% 0%, #e0f2fe 0%, transparent 50%),
+                radial-gradient(at 100% 0%, #fdf2f8 0%, transparent 50%);
+            color: #334155;
             position: relative;
             min-height: 100vh;
         }
+
         .tab-content {
             display: none;
         }
+
         .tab-content.active {
             display: block;
         }
+
         #particles-js {
             position: absolute;
             width: 100%;
             height: 100%;
             z-index: -1;
         }
+
         .experience-image {
             width: 100%;
             height: 200px;
             object-fit: cover;
             border-radius: 8px;
         }
+
         .tab-link.active {
-            background-color: #00d9ff;
-            color: #0f0f23;
+            background-color: #0ea5e9;
+            color: #ffffff;
             border-radius: 8px;
             padding: 8px 16px;
             font-weight: bold;
         }
+
         .project-image {
             width: 100%;
             height: 200px;
             object-fit: cover;
             border-radius: 8px;
         }
+
         .card {
             background-color: #1a1a2e;
             border: 1px solid #00d9ff;
             transition: transform 0.3s ease, box-shadow 0.3s ease;
         }
+
         .card:hover {
             transform: translateY(-5px);
-            box-shadow: 0 10px 20px rgba(0, 217, 255, 0.3);
+            box-shadow: 0 10px 20px rgba(14, 165, 233, 0.2);
         }
+
         .section-title {
-            color: #00d9ff;
+            color: #0ea5e9;
             position: relative;
             display: inline-block;
             margin-bottom: 2rem;
         }
+
         .section-title:after {
             content: '';
             position: absolute;
             width: 50%;
             height: 3px;
-            background: #ff006e;
+            background: #db2777;
             bottom: -10px;
             left: 25%;
         }
+
         .btn-primary {
-            background-color: #00d9ff;
-            color: #0f0f23;
+            background-color: #0ea5e9;
+            color: #ffffff;
             font-weight: bold;
         }
+
         .btn-primary:hover {
-            background-color: #00c4e6;
+            background-color: #0284c7;
         }
+
         .btn-secondary {
-            background-color: #ff006e;
+            background-color: #db2777;
             color: white;
             font-weight: bold;
         }
+
         .btn-secondary:hover {
-            background-color: #e00063;
+            background-color: #be185d;
         }
+
         a {
-            color: #00d9ff;
+            color: #0ea5e9;
         }
+
         a:hover {
-            color: #ff006e;
+            color: #db2777;
             text-decoration: none;
         }
-  </style>
+
+        
+        /* Carousel Styles */
+        .carousel-container {
+            display: flex;
+            overflow-x: auto;
+            scroll-snap-type: x mandatory;
+            gap: 1.5rem;
+            padding-bottom: 1rem;
+            -ms-overflow-style: none; /* IE and Edge */
+            scrollbar-width: none; /* Firefox */
+        }
+        .carousel-container::-webkit-scrollbar {
+            display: none; /* Chrome, Safari and Opera */
+        }
+        .carousel-item {
+            flex: 0 0 85%;
+            scroll-snap-align: start;
+        }
+        @media (min-width: 768px) {
+            .carousel-item {
+                flex: 0 0 45%;
+            }
+        }
+        @media (min-width: 1024px) {
+            .carousel-item {
+                flex: 0 0 30%;
+            }
+        }
+
+        /* Modal Styles */
+        .modal {
+            display: none;
+            position: fixed;
+            z-index: 50;
+            left: 0;
+            top: 0;
+            width: 100%;
+            height: 100%;
+            overflow: auto;
+            background-color: rgba(15, 15, 35, 0.8);
+            align-items: center;
+            justify-content: center;
+        }
+
+        .modal-content {
+            background-color: #ffffff;
+            margin: auto;
+            padding: 20px;
+            border: 1px solid #e2e8f0;
+            border-radius: 12px;
+            width: 80%;
+            max-width: 800px;
+            height: 80vh;
+            display: flex;
+            flex-direction: column;
+            position: relative;
+        }
+
+        .modal-close {
+            position: absolute;
+            top: 10px;
+            right: 20px;
+            color: #334155;
+            font-size: 28px;
+            font-weight: bold;
+            cursor: pointer;
+        }
+
+        .modal-close:hover,
+        .modal-close:focus {
+            color: #db2777;
+            text-decoration: none;
+            cursor: pointer;
+        }
+
+        .cv-iframe {
+            width: 100%;
+            height: 100%;
+            flex-grow: 1;
+            border: none;
+            border-radius: 8px;
+        }
+    </style>
 </head>
+
 <body class="flex flex-col items-center p-4">
-  <!-- Background Particles -->
-  <div class="absolute inset-0 z-0" id="particles-js">
-  </div>
-  <!-- Main Content -->
-  <div class="container relative z-10 flex flex-col items-center">
-   <!-- Navigation Tabs -->
-   <nav class="w-full max-w-4xl mt-8">
-    <ul class="flex justify-around bg-[#1a1a2e] p-4 rounded-lg shadow-lg border border-[#00d9ff]">
-     <li>
-      <a class="tab-link text-lg font-bold cursor-pointer active" data-tab="home">
-       Home
-      </a>
-     </li>
-     <li>
-      <a class="tab-link text-lg font-bold cursor-pointer" data-tab="work-experience">
-       Work Experience
-      </a>
-     </li>
-     <li>
-      <a class="tab-link text-lg font-bold cursor-pointer" data-tab="projects">
-       Projects
-      </a>
-     </li>
-     <li>
-      <a class="tab-link text-lg font-bold cursor-pointer" data-tab="certifications">
-       Certifications
-      </a>
-     </li>
-     <li>
-      <a class="tab-link text-lg font-bold cursor-pointer" data-tab="contact">
-       Contact
-      </a>
-     </li>
-    </ul>
-   </nav>
-   <!-- Home Tab Content -->
-   <div class="tab-content active" id="home">
-    <!-- Profile Section -->
-    <section class="profile section text-center mt-8">
-     <img alt="Rizqi Maulidi" class="rounded-full mx-auto border-4 border-[#00d9ff]" src="static/Rizqi Maulidi CodingCamp.png" width="150" height="150"/>
-     <h1 class="text-3xl font-bold mt-4 text-[#00d9ff]">
-      Rizqi Maulidi
-     </h1>
-     <p class="text-xl text-[#ff006e]">
-      Aspiring Data Scientist & ML Engineer | Exploring the Power of Data & AI
-     </p>
-    </section>
-    <!-- About Me Section -->
-    <section class="about-me section bg-[#1a1a2e] p-6 rounded-lg shadow-lg mt-8 w-full max-w-2xl mx-auto text-center border border-[#00d9ff] card">
-     <h2 class="section-title text-2xl font-bold mb-4">
-      About Me
-     </h2>
-     <p>
-      Passionate and results-driven data enthusiast with hands-on experience in end-to-end data projects, internships, and data-focused bootcamps. 
-      Proficient in Python, Pandas, NumPy, Scikit-learn, TensorFlow, SQL, and Google Colab for data preprocessing, modeling, and evaluation. 
-      Skilled in visualizing insights using Matplotlib, Seaborn, Streamlit, and Tableau to support data-driven decision-making. 
-      Continuously learning and collaborating to deliver impactful solutions through analytical thinking and machine learning.
-     </p>
-    </section>
-    <!-- Educational Background Section -->
-    <section class="education section bg-[#1a1a2e] p-6 rounded-lg shadow-lg mt-8 w-full max-w-2xl mx-auto text-center border border-[#00d9ff] card">
-     <h2 class="section-title text-2xl font-bold mb-4">
-      Educational Background
-     </h2>
-     <p>
-      <strong class="text-[#00d9ff]">
-       UIN Syarif Hidayatullah Jakarta
-      </strong>
-      <br/>
-      Bachelor of Mathematics with Data Science concentration 2021 - 2025
-     </p>
-     <p class="mt-4">
-      <strong class="text-[#00d9ff]">
-       SMAN 44 JAKARTA
-      </strong>
-      <br/>
-      Department of Mathematics and Natural Sciences 2017 - 2021
-     </p>
-    </section>
-    <!-- Work Experience Section (Preview) -->
-    <section class="work-experience section mt-12 w-full max-w-4xl text-center">
-    <h2 class="section-title text-3xl font-bold text-center mb-8">
-        Work Experience
-    </h2>
-    <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
-        
-        <!-- Experience 1 -->
-        <div class="experience bg-[#1a1a2e] p-6 rounded-lg shadow-lg border border-[#00d9ff] card">
-        <h3 class="text-lg font-bold mb-2 text-[#00d9ff]">
-            Machine Learning Engineer
-        </h3>
-        <p class="text-sm text-[#00d9ff] mb-3 font-medium">
-            February 2025 - June 2025
-        </p>
-        <img alt="Machine Learning Engineer" class="experience-image mt-2 mb-2" src="static\CODINGCAMP.jpg" width="300" height="200" />
-        <p>
-            Completed 936 hours of intensive training covering Python, Data Analysis, SQL, Machine Learning, Deep Learning, and Model Deployment, graduating with high distinction
-        </p>
-        <a href="https://www.linkedin.com/company/coding-camp-powered-by-dbs-foundation/posts/?feedView=all" class="text-[#ff006e] underline mt-2 inline-block font-bold">View Detail</a>
-        </div>
-
-        <!-- Experience 2 -->
-        <div class="experience bg-[#1a1a2e] p-6 rounded-lg shadow-lg border border-[#00d9ff] card">
-        <h3 class="text-lg font-bold mb-2 text-[#00d9ff]">
-            Data Scientist
-        </h3>
-        <p class="text-sm text-[#00d9ff] mb-3 font-medium">
-            March 2024 - Nevember 2024
-        </p>
-        <img alt="Data Scientist" class="experience-image mt-2 mb-2" src="static\Taudata_Analytics.jpg" width="300" height="200" />
-        <p>
-            Worked on an NLP project using Aspect-Based Sentiment Analysis to analyze Indonesian automotive social media data, fine-tuning a BERT model and delivering insights on 2023's top five car brands.
-        </p>
-        <a href="https://www.linkedin.com/in/rizqi-maulidi/overlay/experience/2425779951/multiple-media-viewer/?profileId=ACoAAFA5IWIBXmA_4ARs7gVi5SDVNgQrJPtsCzQ&treasuryMediaId=1737547956684" class="text-[#ff006e] underline mt-2 inline-block font-bold">View Detail</a>
-        </div>
-        
-        <!-- Experience 3 -->
-        <div class="experience bg-[#1a1a2e] p-6 rounded-lg shadow-lg border border-[#00d9ff] card">
-        <h3 class="text-lg font-bold mb-2 text-[#00d9ff]">
-            Data Analyst
-        </h3>
-        <p class="text-sm text-[#00d9ff] mb-3 font-medium">
-            January 2024 - February 2024
-        </p>
-        <img alt="Data Analyst" class="experience-image mt-2 mb-2" src="static\BMKG1.jpg" width="300" height="200" />
-        <p>
-            Developed a logistic regression model in R for the Climate Early Warning System by preprocessing climate data, classifying rainfall patterns, and enhancing prediction accuracy through hypothesis testing.
-        </p>
-        <a href="https://www.linkedin.com/in/rizqi-maulidi/details/experience/2425782597/multiple-media-viewer/?locale=in_ID&profileId=ACoAAFA5IWIBXmA_4ARs7gVi5SDVNgQrJPtsCzQ&treasuryMediaId=1719632388218" class="text-[#ff006e] underline mt-2 inline-block font-bold">View Detail</a>
-        </div>
-        
+    <!-- Background Particles -->
+    <div class="absolute inset-0 z-0" id="particles-js">
     </div>
-    <div class="mt-6">
-        <button class="view-more-btn btn-primary px-6 py-3 rounded-lg font-semibold transition duration-300" data-tab="work-experience">
-        View More Work Experience
-        </button>
-    </div>
-    </section>
-
-    <!-- Projects Section (Preview) -->
-    <section class="projects section mt-12 w-full max-w-4xl text-center">
-    <h2 class="section-title text-3xl font-bold text-center mb-8">
-        Projects
-    </h2>
-    <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
-
-        <!-- Project 1 -->
-        <div class="project bg-[#1a1a2e] p-6 rounded-lg shadow-lg border border-[#00d9ff] card">
-        <h3 class="text-lg font-bold mb-2 text-[#00d9ff]">
-            Adopt House
-        </h3>
-        <img alt="Adopt House" class="project-image mt-2 mb-2" src="static\Adopt House.png" width="300" height="200" />
-        <p>
-            Led the development of a full-stack pet adoption platform with content-based recommendation and image classification, coordinating cross-functional teams in a capstone project with DBS Foundation.
-        </p>
-        <a href="https://github.com/capstoneadoptpet" 
-        target="_blank"
-        class="text-[#ff006e] underline mt-2 inline-block font-bold">View on GitHub</a>
-        </div>
-
-        <!-- Project 2 -->
-        <div class="project bg-[#1a1a2e] p-6 rounded-lg shadow-lg border border-[#00d9ff] card">
-        <h3 class="text-lg font-bold mb-2 text-[#00d9ff]">
-            Customer Churn Prediction
-        </h3>
-        <img alt="Customer Churn Prediction" class="project-image mt-2 mb-2" src="static\churnpreview.png" width="300" height="200" />
-        <p>
-            Built a telecom churn prediction system using tuned Random Forest and XGBoost with SMOTE and feature analysis, achieving 91% accuracy and 0.88 ROC-AUC for proactive customer retention.
-        </p>
-        <a href="https://github.com/rizqi-maulidi/Churn-Prediction" 
-        target="_blank"
-        class="text-[#ff006e] underline mt-2 inline-block font-bold">View on GitHub</a>
-        </div>
-        
-        <!-- Project 3 -->
-        <div class="project bg-[#1a1a2e] p-6 rounded-lg shadow-lg border border-[#00d9ff] card">
-        <h3 class="text-lg font-bold mb-2 text-[#00d9ff]">
-            Olist Ecommerce Analysis
-        </h3>
-        <img alt="Olist Ecommerce Analysis" class="project-image mt-2 mb-2" src="static\olishprew.png" width="300" height="200" />
-        <p>
-            Analyzed Brazil's Olist ecommerce data using Python and Streamlit, generating insights on revenue, satisfaction, geospatial trends, and RFM segmentation via an interactive dashboard.
-        </p>
-        <a href="https://github.com/rizqi-maulidi/Olist-Ecommerce-Analysis" 
-        target="_blank"
-        class="text-[#ff006e] underline mt-2 inline-block font-bold">View on GitHub</a>
-        </div>
-        
-    </div>
-    <div class="mt-6">
-        <button class="view-more-btn btn-primary px-6 py-3 rounded-lg font-semibold transition duration-300" data-tab="projects">
-        View More Projects
-        </button>
-    </div>
-    </section>
-
-    <!-- Certification Section (Preview) -->
-    <section class="certification section mt-12 w-full max-w-4xl text-center">
-    <h2 class="section-title text-3xl font-bold text-center mb-8">
-        Certification
-    </h2>
-    <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
-
-        <!-- Certificate 1 -->
-        <div class="certification bg-[#1a1a2e] p-6 rounded-lg shadow-lg border border-[#00d9ff] card flex flex-col items-center">
-        <h3 class="text-center text-lg font-semibold mb-4 text-[#00d9ff]">
-            Applied Machine Learning
-        </h3>
-        <img alt="Applied Machine Learning" class="mx-auto mb-4 rounded-lg" src="static\Machine Learning Terapan.png" />
-        <p class="mt-2 flex-grow">
-            Completed 25+ hours of Dicoding courses on ML system design, project deployment, and case studies in predictive analytics, sentiment analysis, computer vision, and recommendation systems.
-        </p>
-        <a href="https://www.dicoding.com/certificates/L4PQEN69OPO1" target="_blank" 
-        class="text-[#ff006e] underline mt-2 inline-block font-bold">View Detail</a>
-        </div>
-
-        <!-- Certificate 2 -->
-        <div class="certification bg-[#1a1a2e] p-6 rounded-lg shadow-lg border border-[#00d9ff] card flex flex-col items-center">
-        <h3 class="text-center text-lg font-semibold mb-4 text-[#00d9ff]">
-            Data Analysis with Python
-        </h3>
-        <img alt="Data Analysis with Python" class="mx-auto mb-4 rounded-lg" src="static\Belajar Analisis Data dengan Python.png" />
-        <p class="mt-2 flex-grow">
-            Completed 22+ hours of Dicoding courses on data analysis fundamentals, descriptive statistics, data processing, wrangling, EDA, data visualization, and interactive dashboard development with Streamlit.
-        </p>
-        <a href="https://www.dicoding.com/certificates/ERZRE7ROWXYV" target="_blank" 
-        class="text-[#ff006e] underline mt-2 inline-block font-bold">View Detail</a>
-        </div>
-
-        <!-- Certificate 3 -->
-        <div class="certification bg-[#1a1a2e] p-6 rounded-lg shadow-lg border border-[#00d9ff] card flex flex-col items-center">
-        <h3 class="text-center text-lg font-semibold mb-4 text-[#00d9ff]">
-            Database Design & Programming with SQL
-        </h3>
-        <img alt="Database Design & Programming with SQL" class="mx-auto mb-4 rounded-lg" src="static\Database Design & Database Programming with SQL.png" />
-        <p class="mt-2 flex-grow">
-            Completed 180 hours of training in Database Design and SQL Programming through the Talent Scouting Academy - Digital Talent Scholarship 2024 (90 hours each module).
-        </p>
-        <a href="https://digitalent.komdigi.go.id/pelatihan/7340" target="_blank" 
-        class="text-[#ff006e] underline mt-2 inline-block font-bold">View Detail</a>
-        </div>
-
-    </div>
-    <div class="mt-6">
-        <button class="view-more-btn btn-primary px-6 py-3 rounded-lg font-semibold transition duration-300" data-tab="certifications">
-        View More Certifications
-        </button>
-    </div>
-    </section>
-
-    <!-- Skill Abilities Section -->
-    <section class="skills section mt-12 w-full max-w-4xl text-center">
-        <h2 class="section-title text-3xl font-bold text-center mb-8">
-         Skills
-        </h2>
-        <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
-         <div class="skill bg-[#1a1a2e] p-6 rounded-lg shadow-lg border border-[#00d9ff] card">
-          <h3 class="text-lg font-bold mb-2 text-[#00d9ff]">
-           Programming Language
-          </h3>
-          <p>
-           Python, R, JavaScript
-          </p>
-         </div>
-         <div class="skill bg-[#1a1a2e] p-6 rounded-lg shadow-lg border border-[#00d9ff] card">
-          <h3 class="text-lg font-bold mb-2 text-[#00d9ff]">
-           Data Visualization
-          </h3>
-          <p>
-           Tableau, Streamlit, Excel
-          </p>
-         </div>
-         <div class="skill bg-[#1a1a2e] p-6 rounded-lg shadow-lg border border-[#00d9ff] card">
-          <h3 class="text-lg font-bold mb-2 text-[#00d9ff]">
-           Database
-          </h3>
-          <p>
-           PostgreSQL, Oracle Database
-          </p>
-         </div>
-        </div>
-       </section>
-    <!-- Hobby Section -->
-    <section class="hobbies section mt-12 w-full max-w-4xl text-center mx-auto">
-        <h2 class="section-title text-3xl font-bold text-center mb-8">
-         Hobby
-        </h2>
-        <div class="flex flex-wrap justify-center gap-8">
-         <div class="hobby bg-[#1a1a2e] p-6 rounded-lg shadow-lg max-w-sm overflow-hidden border border-[#00d9ff] card">
-          <h3 class="text-lg font-bold mb-2 text-[#00d9ff]">
-           Camping & Outdoor Activities
-          </h3>
-          <img alt="Camping" class="w-full h-auto rounded-lg mx-auto" src="static/kiimau.jpg"/>
-          <p>
-           Outside of data science, I enjoy camping and outdoor activities that help me stay curious, observant, and connected to nature—qualities that also inspire my analytical thinking and problem-solving approach.
-          </p>
-         </div>
-        </div>
-       </section>
-    </div>
-
-    <!-- Work Experience Tab Content -->
-    <div class="tab-content" id="work-experience">
-        <section class="work-experience section mt-12 w-full max-w-4xl text-center mx-auto">
-            <h2 class="section-title text-3xl font-bold text-center mb-8">
-                Complete Work Experience
-            </h2>
-            <div class="flex flex-col gap-8">
-                <!-- Machine Learning Engineer Coding Camp 2025 powered by DBS Foundation -->
-                <div class="experience bg-[#1a1a2e] p-6 rounded-lg shadow-lg border border-[#00d9ff] card">
-                    <h3 class="text-xl font-bold mb-2 text-[#00d9ff]">
-                        Machine Learning Engineer Coding Camp 2025 powered by DBS Foundation
-                    </h3>
-                    <p class="text-sm text-[#00d9ff] mb-3 font-medium">
-                        February 2025 - June 2025
+    <!-- Main Content -->
+    <div class="container relative z-10 flex flex-col items-center">
+        <!-- Navigation Tabs -->
+        <nav class="w-full max-w-4xl mt-8">
+            <ul class="flex justify-around bg-white p-4 rounded-lg shadow-lg border border-gray-200">
+                <li>
+                    <a class="tab-link text-lg font-bold cursor-pointer active" data-tab="home">
+                        Home
+                    </a>
+                </li>
+                <li>
+                    <a class="tab-link text-lg font-bold cursor-pointer" data-tab="work-experience">
+                        Work Experience
+                    </a>
+                </li>
+                <li>
+                    <a class="tab-link text-lg font-bold cursor-pointer" data-tab="projects">
+                        Projects
+                    </a>
+                </li>
+                <li>
+                    <a class="tab-link text-lg font-bold cursor-pointer" data-tab="certifications">
+                        Certifications
+                    </a>
+                </li>
+                <li>
+                    <a class="tab-link text-lg font-bold cursor-pointer" data-tab="contact">
+                        Contact
+                    </a>
+                </li>
+            </ul>
+        </nav>
+        <!-- Home Tab Content -->
+        <div class="tab-content active" id="home">
+            <!-- Profile Section -->
+            <section class="profile section text-center mt-8">
+                <img alt="Rizqi Maulidi" class="rounded-full mx-auto border-4 border-gray-200"
+                    src="static/Rizqi Maulidi CodingCamp.png" width="150" height="150" />
+                <h1 class="text-3xl font-bold mt-4 text-[#0ea5e9]">
+                    Rizqi Maulidi
+                </h1>
+                <p class="text-xl text-[#db2777] mb-4">
+                    Data Scientist & ML Engineer <br>
+                    <span class="text-lg">Passionate about unlocking insights and solving problems through Data and
+                        AI</span>
+                </p>
+                <button onclick="openCVModal()"
+                    class="btn-primary px-6 py-3 rounded-lg font-semibold transition duration-300 mt-2">
+                    View CV
+                </button>
+            </section>
+                        <div class="grid grid-cols-1 md:grid-cols-2 gap-8 mt-8 w-full max-w-4xl mx-auto">
+                <!-- About Me Section -->
+                <section class="about-me section bg-white p-6 rounded-lg shadow-lg text-center border border-gray-200 card flex flex-col justify-center">
+                    <h2 class="section-title text-2xl font-bold mb-4">About Me</h2>
+                    <p>
+                        Passionate and results-driven data enthusiast with hands-on experience in end-to-end data projects,
+                        internships, and data-focused bootcamps.
+                        Proficient in Python, Pandas, NumPy, Scikit-learn, TensorFlow, SQL, and Google Colab for data
+                        preprocessing, modeling, and evaluation.
+                        Skilled in visualizing insights using Matplotlib, Seaborn, Streamlit, and Tableau to support
+                        data-driven decision-making.
+                        Continuously learning and collaborating to deliver impactful solutions through analytical thinking
+                        and machine learning.
                     </p>
-                    <img alt="Machine Learning Engineer Coding Camp 2025 powered by DBS Foundation"
-                        class="experience-image mt-2 mb-4 w-full h-[200px] rounded-lg object-contain"
-                        src="static\DBSCODINGCAMP.png" />
-                    <ul class="text-left space-y-2">
-                        <li>• Completed 936 hours of training in Python, Data Analysis, SQL, Machine Learning, Deep Learning, and Deployment.
-                        <li>• Analyzed Olist Ecommerce data to uncover revenue, satisfaction, and demand trends.
-                        <li>• Developed a Gojek sentiment analysis app using LSTM and Transformer models (92.41% accuracy).
-                        <li>• Built a churn prediction model to identify at-risk customers using classification techniques.
-                        <li>• Designed a recommendation system with collaborative and content-based filtering.
-                        <li>• Created insightful visualizations and dashboards with Matplotlib, Seaborn, and Streamlit.
-                        <li>• Deployed full-stack ML apps with modular architecture (frontend, backend, ML services).
-                    </ul>
-                    <a href="https://www.linkedin.com/company/coding-camp-powered-by-dbs-foundation/posts/?feedView=all"
-                    target="_blank"
-                    class="text-[#ff006e] underline mt-2 inline-block font-bold">View Detail</a>
-                </div>
-
-                <!-- Data Scientist at taudata Analytics -->
-                <div class="experience bg-[#1a1a2e] p-6 rounded-lg shadow-lg border border-[#00d9ff] card">
-                    <h3 class="text-xl font-bold mb-2 text-[#00d9ff]">
-                        Data Scientist at taudata Analytics
-                    </h3>
-                    <p class="text-sm text-[#00d9ff] mb-3 font-medium">
-                        March 2024 - Nevember 2024
+                </section>
+                <!-- Educational Background Section -->
+                <section class="education section bg-white p-6 rounded-lg shadow-lg text-center border border-gray-200 card flex flex-col justify-center">
+                    <h2 class="section-title text-2xl font-bold mb-4">Educational Background</h2>
+                    <p>
+                        <strong class="text-[#0ea5e9]">UIN Syarif Hidayatullah Jakarta</strong><br />
+                        Bachelor of Mathematics with Data Science concentration 2021 - 2025
                     </p>
-                    <img alt="Data Scientist at taudata Analytics"
-                        class="experience-image mt-2 mb-4 w-full h-[200px] rounded-lg object-contain"
-                        src="static\taudata-cover.jpg" />
-                    <ul class="text-left space-y-2">
-                        <li>• Worked in the Brand Monitoring division for the automotive industry, analyzing social media data for sentiment and trends. 
-                        <li>• Conducted NLP project using Aspect-Based Sentiment Analysis (ABSA) on social media data, including sentiment and aspect labeling.
-                        <li>• Performed comprehensive preprocessing and fine-tuned a BERT-based model on labeled Indonesian automotive data.
-                        <li>• Created sentiment analysis and developed insightful visualizations highlighting the five best-selling car brands in Indonesia for 2023.
-                    </ul>
-                    <a href="https://www.linkedin.com/in/rizqi-maulidi/overlay/experience/2425779951/multiple-media-viewer/?profileId=ACoAAFA5IWIBXmA_4ARs7gVi5SDVNgQrJPtsCzQ&treasuryMediaId=1737547956684"
-                    target="_blank"
-                    class="text-[#ff006e] underline mt-2 inline-block font-bold">View Detail</a>
-                </div>
-
-                <!-- Junior Data Analyst at BMKG  -->
-                <div class="experience bg-[#1a1a2e] p-6 rounded-lg shadow-lg border border-[#00d9ff] card">
-                    <h3 class="text-xl font-bold mb-2 text-[#00d9ff]">
-                        Junior Data Analyst at BMKG 
-                    </h3>
-                    <p class="text-sm text-[#00d9ff] mb-3 font-medium">
-                        January 2024 - February 2024
+                    <p class="mt-4">
+                        <strong class="text-[#0ea5e9]">SMAN 44 JAKARTA</strong><br />
+                        Department of Mathematics and Natural Sciences 2017 - 2021
                     </p>
-                    <img alt="Data Analyst at BMKG "
-                        class="experience-image mt-2 mb-4 w-full h-[200px] rounded-lg object-contain"
-                        src="static\bmkglogo.png" />
-                    <ul class="text-left space-y-2">
-                        <li>• Built a logistic regression model in R to predict rainfall as part of the Climate Early Warning System (CEWS) initiative.
-                        <li>• Preprocessed climate datasets by classifying wet and dry months and conducted hypothesis testing to optimize model performance. 
-                        <li>• Delivered interpretable results and contributed to improving the accuracy of early warning climate predictions.
-                    </ul>
-                    <a href="https://www.linkedin.com/in/rizqi-maulidi/details/experience/2425782597/multiple-media-viewer/?locale=in_ID&profileId=ACoAAFA5IWIBXmA_4ARs7gVi5SDVNgQrJPtsCzQ&treasuryMediaId=1719632388218"
-                    target="_blank"
-                    class="text-[#ff006e] underline mt-2 inline-block font-bold">View Detail</a>
-                </div>
-
-                <!-- Staff Department RELASI -->
-                <div class="experience bg-[#1a1a2e] p-6 rounded-lg shadow-lg border border-[#00d9ff] card">
-                    <h3 class="text-xl font-bold mb-2 text-[#00d9ff]">
-                        Staff, Department RELASI
-                    </h3>
-                    <p class="text-sm text-[#00d9ff] mb-3 font-medium">
-                        March 2023 - March 2024
-                    </p>
-                    <img alt="Staff, Department RELASI"
-                        class="experience-image mt-2 mb-4 w-full h-[200px] rounded-lg object-contain"
-                        src="static\himatikabanner.png" />
-                    <ul class="text-left space-y-2">
-                        <li>• Contributed to organizing spiritual and social programs for Mathematics students, focusing on Islamic values and community service.
-                        <li>• Assisted in planning and executing key programs such as INSAN (Inspirasi Ramadhan), Kajian HIMATIKA, and GAUS (Galang Amal Untuk Sesama) to foster religious awareness and social responsibility.
-                        <li>• Participated in collaborative initiatives like Sharing With Alumni and HIMATIKA Mengajar, bridging connections between students, alumni, and the broader community.
-                        <li>• Supported the development of inter-organizational relations through events aimed at enhancing communication and collaboration among student bodies.
-                    </ul>
-                    <a href="https://www.linkedin.com/in/rizqi-maulidi/details/experience/2425789206/multiple-media-viewer/?locale=in_ID&profileId=ACoAAFA5IWIBXmA_4ARs7gVi5SDVNgQrJPtsCzQ&treasuryMediaId=1719631085365"
-                    target="_blank"
-                    class="text-[#ff006e] underline mt-2 inline-block font-bold">View Detail</a>
-                </div>
+                </section>
             </div>
-        </section>
+            <!-- Skill Abilities Section -->
+            <section class="skills section mt-12 w-full max-w-4xl text-center">
+                <h2 class="section-title text-3xl font-bold text-center mb-8">
+                    Skills
+                </h2>
+                <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+                    <div class="skill bg-white p-6 rounded-lg shadow-lg border border-gray-200 card">
+                        <h3 class="text-lg font-bold mb-2 text-[#0ea5e9]">
+                            Programming Language
+                        </h3>
+                        <p>
+                            Python, R, JavaScript
+                        </p>
+                    </div>
+                    <div class="skill bg-white p-6 rounded-lg shadow-lg border border-gray-200 card">
+                        <h3 class="text-lg font-bold mb-2 text-[#0ea5e9]">
+                            Data Visualization
+                        </h3>
+                        <p>
+                            Tableau, Power BI
+                        </p>
+                    </div>
+                    <div class="skill bg-white p-6 rounded-lg shadow-lg border border-gray-200 card">
+                        <h3 class="text-lg font-bold mb-2 text-[#0ea5e9]">
+                            Database
+                        </h3>
+                        <p>
+                            PostgreSQL, MongoDB
+                        </p>
+                    </div>
+                </div>
+            </section>
+
+
+            <!-- Experience Preview Carousel -->
+            <section class="work-experience section mt-12 w-full max-w-4xl text-center mx-auto">
+                <h2 class="section-title text-3xl font-bold text-center mb-8">Work Experience Highlight</h2>
+                <div class="carousel-container">
+                    <!-- Naradata ID -->
+                    <div class="carousel-item experience bg-white p-6 rounded-lg shadow-lg border border-gray-200 card flex flex-col">
+                        <h3 class="text-lg font-bold mb-2 text-[#0ea5e9]">Machine Learning Engineer at Naradata ID</h3>
+                        <p class="text-sm text-[#0ea5e9] mb-3 font-medium">Aug 2025 - Present</p>
+                        <img alt="Machine Learning Engineer at Naradata ID" class="experience-image mt-2 mb-2 object-contain" src="static/naradata_id_logo.jpg" style="height: 150px;" />
+                        <p class="text-sm flex-grow">Designed and implemented data pipelines to ingest and preprocess large-scale Indonesian social media data for analytics and machine learning workflows. Built a Retrieval-Augmented Generation (RAG) chatbot integrated into a web-based monitoring platform.</p>
+                        <button class="text-[#db2777] underline mt-4 inline-block font-bold cursor-pointer" onclick="document.querySelector('[data-tab=\'work-experience\'].tab-link').click();">Read More</button>
+                    </div>
+                    <!-- Coding Camp -->
+                    <div class="carousel-item experience bg-white p-6 rounded-lg shadow-lg border border-gray-200 card flex flex-col">
+                        <h3 class="text-lg font-bold mb-2 text-[#0ea5e9]">Machine Learning Engineer</h3>
+                        <p class="text-sm text-[#0ea5e9] mb-3 font-medium">Feb 2025 - Jun 2025</p>
+                        <img alt="Machine Learning Engineer" class="experience-image mt-2 mb-2 object-contain" src="static/CODINGCAMP.jpg" style="height: 150px;" />
+                        <p class="text-sm flex-grow">Completed 936 hours of training in Python, Data Analysis, SQL, Machine Learning, Deep Learning, and Deployment. Analyzed Olist Ecommerce data to uncover trends and deployed full-stack ML apps.</p>
+                        <button class="text-[#db2777] underline mt-4 inline-block font-bold cursor-pointer" onclick="document.querySelector('[data-tab=\'work-experience\'].tab-link').click();">Read More</button>
+                    </div>
+                    <!-- Taudata -->
+                    <div class="carousel-item experience bg-white p-6 rounded-lg shadow-lg border border-gray-200 card flex flex-col">
+                        <h3 class="text-lg font-bold mb-2 text-[#0ea5e9]">Data Scientist</h3>
+                        <p class="text-sm text-[#0ea5e9] mb-3 font-medium">Mar 2024 - Nov 2024</p>
+                        <img alt="Data Scientist" class="experience-image mt-2 mb-2 object-contain" src="static/taudata_logo.png" style="height: 150px;" />
+                        <p class="text-sm flex-grow">Worked in the Brand Monitoring division for the automotive industry. Conducted NLP project using Aspect-Based Sentiment Analysis (ABSA) and developed insightful visualizations highlighting the top car brands.</p>
+                        <button class="text-[#db2777] underline mt-4 inline-block font-bold cursor-pointer" onclick="document.querySelector('[data-tab=\'work-experience\'].tab-link').click();">Read More</button>
+                    </div>
+                </div>
+            </section>
+
+            <!-- Projects Preview Carousel -->
+            <section class="projects section mt-12 w-full max-w-4xl text-center mx-auto">
+                <h2 class="section-title text-3xl font-bold text-center mb-8">Selected Projects</h2>
+                <div class="carousel-container">
+                    <!-- Project 1 -->
+                    <div class="carousel-item project bg-white p-6 rounded-lg shadow-lg border border-gray-200 card flex flex-col">
+                        <h3 class="text-lg font-bold mb-2 text-[#0ea5e9]">Adopt House</h3>
+                        <img alt="Adopt House" class="project-image mt-2 mb-2 object-contain" src="static/Adopt House.png" style="height: 150px;" />
+                        <p class="text-sm flex-grow">Led the development of a full-stack web-based pet adoption platform as Project Manager, integrating content-based recommendation and image classification models. Coordinated collaboration across frontend, backend, and machine learning divisions.</p>
+                        <button class="text-[#db2777] underline mt-4 inline-block font-bold cursor-pointer" onclick="document.querySelector('[data-tab=\'projects\'].tab-link').click();">Read More</button>
+                    </div>
+                    <!-- Project 2 -->
+                    <div class="carousel-item project bg-white p-6 rounded-lg shadow-lg border border-gray-200 card flex flex-col">
+                        <h3 class="text-lg font-bold mb-2 text-[#0ea5e9]">Customer Churn Prediction</h3>
+                        <img alt="Customer Churn Prediction" class="project-image mt-2 mb-2 object-contain" src="static/churnpreview.png" style="height: 150px;" />
+                        <p class="text-sm flex-grow">Developed a customer churn prediction system for telecommunications industry using ensemble machine learning approaches by implementing Random Forest and XGBoost algorithms with hyperparameter tuning, achieving 91% accuracy.</p>
+                        <button class="text-[#db2777] underline mt-4 inline-block font-bold cursor-pointer" onclick="document.querySelector('[data-tab=\'projects\'].tab-link').click();">Read More</button>
+                    </div>
+                    <!-- Project 3 -->
+                    <div class="carousel-item project bg-white p-6 rounded-lg shadow-lg border border-gray-200 card flex flex-col">
+                        <h3 class="text-lg font-bold mb-2 text-[#0ea5e9]">Olist Ecommerce Analysis</h3>
+                        <img alt="Olist Ecommerce Analysis" class="project-image mt-2 mb-2 object-contain" src="static/olishprew.png" style="height: 150px;" />
+                        <p class="text-sm flex-grow">Conducted in-depth exploratory and advanced analytics on Brazil's Olist ecommerce dataset using Python and Streamlit to generate strategic business insights on revenue, customer satisfaction, and RFM segmentation.</p>
+                        <button class="text-[#db2777] underline mt-4 inline-block font-bold cursor-pointer" onclick="document.querySelector('[data-tab=\'projects\'].tab-link').click();">Read More</button>
+                    </div>
+                </div>
+            </section>
+
+        </div>
+
+        <!-- Work Experience Tab Content -->
+        <div class="tab-content" id="work-experience">
+            <section class="work-experience section mt-12 w-full max-w-4xl text-center mx-auto">
+                <h2 class="section-title text-3xl font-bold text-center mb-8">
+                    Complete Work Experience
+                </h2>
+                <div class="flex flex-col gap-8">
+                    <!-- Machine Learning Engineer at Naradata ID -->
+                    <div id="naradata-experience"
+                        class="experience bg-white p-6 rounded-lg shadow-lg border border-gray-200 card">
+                        <h3 class="text-xl font-bold mb-2 text-[#0ea5e9]">
+                            Machine Learning Engineer at Naradata ID
+                        </h3>
+                        <p class="text-sm text-[#0ea5e9] mb-3 font-medium">
+                            Aug 2025 - Present
+                        </p>
+                        <img alt="Machine Learning Engineer at Naradata ID"
+                            class="experience-image mt-2 mb-4 w-full h-[200px] rounded-lg object-contain"
+                            src="static/naradata_id_cover.jpg" />
+                        <ul class="text-left space-y-2">
+                            <li>• Designed and implemented data pipelines to ingest and preprocess large-scale
+                                Indonesian social media data for analytics and machine learning workflows.</li>
+                            <li>• Developed and fine-tuned Transformer-based models (BERT) for sentiment, emotion, and
+                                topic classification on Indonesian social media datasets, achieving >90% model accuracy.
+                            </li>
+                            <li>• Built a Retrieval-Augmented Generation (RAG) chatbot integrated into a web-based
+                                monitoring platform to automate analytical queries and generate daily reports, improving
+                                operational efficiency for analysts.</li>
+                            <li>• Conducted exploratory data analysis (EDA) and social network analysis (SNA) to
+                                identify influence patterns, community clusters, and information flow dynamics in public
+                                discourse data.</li>
+                            <li>• Collaborated with cross-functional teams including analysts and engineers to translate
+                                business requirements into data-driven machine learning solutions.</li>
+                        </ul>
+                    </div>
+
+                    <!-- Machine Learning Engineer Coding Camp 2025 powered by DBS Foundation -->
+                    <div class="experience bg-white p-6 rounded-lg shadow-lg border border-gray-200 card">
+                        <h3 class="text-xl font-bold mb-2 text-[#0ea5e9]">
+                            Machine Learning Engineer Coding Camp 2025 powered by DBS Foundation
+                        </h3>
+                        <p class="text-sm text-[#0ea5e9] mb-3 font-medium">
+                            February 2025 - June 2025
+                        </p>
+                        <img alt="Machine Learning Engineer Coding Camp 2025 powered by DBS Foundation"
+                            class="experience-image mt-2 mb-4 w-full h-[200px] rounded-lg object-contain"
+                            src="static\DBSCODINGCAMP.png" />
+                        <ul class="text-left space-y-2">
+                            <li>• Completed 936 hours of training in Python, Data Analysis, SQL, Machine Learning, Deep
+                                Learning, and Deployment.
+                            <li>• Analyzed Olist Ecommerce data to uncover revenue, satisfaction, and demand trends.
+                            <li>• Developed a Gojek sentiment analysis app using LSTM and Transformer models (92.41%
+                                accuracy).
+                            <li>• Built a churn prediction model to identify at-risk customers using classification
+                                techniques.
+                            <li>• Designed a recommendation system with collaborative and content-based filtering.
+                            <li>• Created insightful visualizations and dashboards with Matplotlib, Seaborn, and
+                                Streamlit.
+                            <li>• Deployed full-stack ML apps with modular architecture (frontend, backend, ML
+                                services).
+                        </ul>
+                        <a href="https://www.linkedin.com/company/coding-camp-powered-by-dbs-foundation/posts/?feedView=all"
+                            target="_blank" class="text-[#db2777] underline mt-2 inline-block font-bold">View Detail</a>
+                    </div>
+
+                    <!-- Data Scientist at taudata Analytics -->
+                    <div class="experience bg-white p-6 rounded-lg shadow-lg border border-gray-200 card">
+                        <h3 class="text-xl font-bold mb-2 text-[#0ea5e9]">
+                            Data Scientist at taudata Analytics
+                        </h3>
+                        <p class="text-sm text-[#0ea5e9] mb-3 font-medium">
+                            March 2024 - Nevember 2024
+                        </p>
+                        <img alt="Data Scientist at taudata Analytics"
+                            class="experience-image mt-2 mb-4 w-full h-[200px] rounded-lg object-contain"
+                            src="static\taudata-cover.jpg" />
+                        <ul class="text-left space-y-2">
+                            <li>• Worked in the Brand Monitoring division for the automotive industry, analyzing social
+                                media data for sentiment and trends.
+                            <li>• Conducted NLP project using Aspect-Based Sentiment Analysis (ABSA) on social media
+                                data, including sentiment and aspect labeling.
+                            <li>• Performed comprehensive preprocessing and fine-tuned a BERT-based model on labeled
+                                Indonesian automotive data.
+                            <li>• Created sentiment analysis and developed insightful visualizations highlighting the
+                                five best-selling car brands in Indonesia for 2023.
+                        </ul>
+                        <a href="https://www.linkedin.com/in/rizqi-maulidi/overlay/experience/2425779951/multiple-media-viewer/?profileId=ACoAAFA5IWIBXmA_4ARs7gVi5SDVNgQrJPtsCzQ&treasuryMediaId=1737547956684"
+                            target="_blank" class="text-[#db2777] underline mt-2 inline-block font-bold">View Detail</a>
+                    </div>
+
+                    <!-- Junior Data Analyst at BMKG  -->
+                    <div class="experience bg-white p-6 rounded-lg shadow-lg border border-gray-200 card">
+                        <h3 class="text-xl font-bold mb-2 text-[#0ea5e9]">
+                            Junior Data Analyst at BMKG
+                        </h3>
+                        <p class="text-sm text-[#0ea5e9] mb-3 font-medium">
+                            January 2024 - February 2024
+                        </p>
+                        <img alt="Data Analyst at BMKG "
+                            class="experience-image mt-2 mb-4 w-full h-[200px] rounded-lg object-contain"
+                            src="static\bmkglogo.png" />
+                        <ul class="text-left space-y-2">
+                            <li>• Built a logistic regression model in R to predict rainfall as part of the Climate
+                                Early Warning System (CEWS) initiative.
+                            <li>• Preprocessed climate datasets by classifying wet and dry months and conducted
+                                hypothesis testing to optimize model performance.
+                            <li>• Delivered interpretable results and contributed to improving the accuracy of early
+                                warning climate predictions.
+                        </ul>
+                        <a href="https://www.linkedin.com/in/rizqi-maulidi/details/experience/2425782597/multiple-media-viewer/?locale=in_ID&profileId=ACoAAFA5IWIBXmA_4ARs7gVi5SDVNgQrJPtsCzQ&treasuryMediaId=1719632388218"
+                            target="_blank" class="text-[#db2777] underline mt-2 inline-block font-bold">View Detail</a>
+                    </div>
+
+                    <!-- Staff Department RELASI -->
+                    <div class="experience bg-white p-6 rounded-lg shadow-lg border border-gray-200 card">
+                        <h3 class="text-xl font-bold mb-2 text-[#0ea5e9]">
+                            Staff, Department RELASI
+                        </h3>
+                        <p class="text-sm text-[#0ea5e9] mb-3 font-medium">
+                            March 2023 - March 2024
+                        </p>
+                        <img alt="Staff, Department RELASI"
+                            class="experience-image mt-2 mb-4 w-full h-[200px] rounded-lg object-contain"
+                            src="static\himatikabanner.png" />
+                        <ul class="text-left space-y-2">
+                            <li>• Contributed to organizing spiritual and social programs for Mathematics students,
+                                focusing on Islamic values and community service.
+                            <li>• Assisted in planning and executing key programs such as INSAN (Inspirasi Ramadhan),
+                                Kajian HIMATIKA, and GAUS (Galang Amal Untuk Sesama) to foster religious awareness and
+                                social responsibility.
+                            <li>• Participated in collaborative initiatives like Sharing With Alumni and HIMATIKA
+                                Mengajar, bridging connections between students, alumni, and the broader community.
+                            <li>• Supported the development of inter-organizational relations through events aimed at
+                                enhancing communication and collaboration among student bodies.
+                        </ul>
+                        <a href="https://www.linkedin.com/in/rizqi-maulidi/details/experience/2425789206/multiple-media-viewer/?locale=in_ID&profileId=ACoAAFA5IWIBXmA_4ARs7gVi5SDVNgQrJPtsCzQ&treasuryMediaId=1719631085365"
+                            target="_blank" class="text-[#db2777] underline mt-2 inline-block font-bold">View Detail</a>
+                    </div>
+                </div>
+            </section>
+        </div>
+
+        <!-- Projects Tab Content -->
+        <div class="tab-content" id="projects">
+            <section class="projects section mt-12 w-full max-w-4xl text-center mx-auto">
+                <h2 class="section-title text-3xl font-bold text-center mb-8">
+                    Projects
+                </h2>
+                <div class="flex flex-col gap-8">
+
+                    <!-- Adopt House -->
+                    <div class="project bg-white p-6 rounded-lg shadow-lg border border-gray-200 card">
+                        <h3 class="text-xl font-bold mb-2 text-[#0ea5e9]">
+                            Adopt House
+                        </h3>
+                        <img alt="Adopt House"
+                            class="project-image mt-2 mb-4 w-full h-[200px] rounded-lg object-contain"
+                            src="static\Adopt House.png" />
+                        <p>
+                            Led the development of a full-stack web-based pet adoption platform as Project Manager,
+                            integrating content-based recommendation and image classification models. Coordinated
+                            collaboration across frontend, backend, and machine learning divisions as part of the Coding
+                            Camp capstone project powered by DBS Foundation.
+                        </p>
+                        <a href="https://github.com/capstoneadoptpet" target="_blank"
+                            class="text-[#db2777] underline mt-2 inline-block font-bold">View on GitHub</a>
+                    </div>
+
+                    <!-- Customer Churn Prediction -->
+                    <div class="project bg-white p-6 rounded-lg shadow-lg border border-gray-200 card">
+                        <h3 class="text-xl font-bold mb-2 text-[#0ea5e9]">
+                            Customer Churn Prediction
+                        </h3>
+                        <img alt="Customer Churn Prediction"
+                            class="project-image mt-2 mb-4 w-full h-[200px] rounded-lg object-contain"
+                            src="static/Customer_Churn_Prediction_Models_in_Machine_Learning.png" />
+                        <p>
+                            Developed a customer churn prediction system for telecommunications industry using ensemble
+                            machine learning approaches by implementing Random Forest and XGBoost algorithms with
+                            hyperparameter tuning, SMOTE for handling class imbalance, and comprehensive feature
+                            analysis, achieving 91% accuracy and 0.8843 ROC-AUC score with the Tuned Random Forest model
+                            to enable proactive customer retention strategies.
+                        </p>
+                        <a href="https://github.com/rizqi-maulidi/Flood-Prediction-Exercise" target="_blank"
+                            class="text-[#db2777] underline mt-2 inline-block font-bold">View on GitHub</a>
+                    </div>
+
+                    <!-- Olist Ecommerce Analysis -->
+                    <div class="project bg-white p-6 rounded-lg shadow-lg border border-gray-200 card">
+                        <h3 class="text-xl font-bold mb-2 text-[#0ea5e9]">
+                            Olist Ecommerce Analysis
+                        </h3>
+                        <img alt="Olist Ecommerce Analysis"
+                            class="project-image mt-2 mb-4 w-full h-[200px] rounded-lg object-contain"
+                            src="static\olishproject.png" />
+                        <p>
+                            Conducted in-depth exploratory and advanced analytics on Brazil's Olist ecommerce dataset
+                            using Python and Streamlit to generate strategic business insights on revenue, customer
+                            satisfaction, geospatial distribution, and RFM segmentation, culminating in an interactive
+                            dashboard deployment in streamlit.
+                        </p>
+                        <a href="https://github.com/rizqi-maulidi/-Olist-Ecommerce-Analysis" target="_blank"
+                            class="text-[#db2777] underline mt-2 inline-block font-bold">View on GitHub</a>
+                    </div>
+
+                    <!-- Sentiment Analysis Indonesian Gojek app -->
+                    <div class="project bg-white p-6 rounded-lg shadow-lg border border-gray-200 card">
+                        <h3 class="text-xl font-bold mb-2 text-[#0ea5e9]">
+                            Sentiment Analysis Indonesian Gojek app
+                        </h3>
+                        <img alt="Sentiment Analysis Indonesian Gojek app"
+                            class="project-image mt-2 mb-4 w-full h-[200px] rounded-lg object-contain"
+                            src="static\gojeksentimen.png" />
+                        <p>
+                            Performed sentiment analysis on Gojek app reviews scraped from Google Play Store, including
+                            exploratory data analysis, Indonesian text preprocessing, lexicon-based sentiment labeling,
+                            and training deep learning models (LSTM and Transformer) with the best model achieving
+                            92.41% test accuracy.
+                        </p>
+                        <a href=https://github.com/rizqi-maulidi/Sentiment_Analysis_Gojek" target="_blank"
+                            class="text-[#db2777] underline mt-2 inline-block font-bold">View on GitHub</a>
+                    </div>
+
+                    <!-- Study Recommendation -->
+                    <div class="project bg-white p-6 rounded-lg shadow-lg border border-gray-200 card">
+                        <h3 class="text-xl font-bold mb-2 text-[#0ea5e9]">
+                            Study Recommendation
+                        </h3>
+                        <img alt="Study Recommendation"
+                            class="project-image mt-2 mb-4 w-full h-[200px] rounded-lg object-contain"
+                            src="static\studyrecom.png" />
+                        <p>
+                            Developed a hybrid content-based recommendation system to suggest suitable academic study
+                            fields for students by integrating normalized academic scores, extracurricular activities,
+                            and career aspirations, leveraging cosine similarity and rule-based profiling, and achieving
+                            up to 25.11% recommendation accuracy.
+                        </p>
+                        <a href="https://github.com/rizqi-maulidi/Recomendation-System" target="_blank"
+                            class="text-[#db2777] underline mt-2 inline-block font-bold">View on GitHub</a>
+                    </div>
+
+                    <!-- Course Segmentation -->
+                    <div class="project bg-white p-6 rounded-lg shadow-lg border border-gray-200 card">
+                        <h3 class="text-xl font-bold mb-2 text-[#0ea5e9]">
+                            Course Segmentation Based on Popularity and Course Category Prediction
+                        </h3>
+                        <img alt="Course Segmentation"
+                            class="project-image mt-2 mb-4 w-full h-[200px] rounded-lg object-contain"
+                            src="static\udemy.png" />
+                        <p>
+                            This project focuses on segmenting Udemy Development courses using machine learning
+                            techniques. Using KMeans clustering, 13,608 courses were grouped into three key segments:
+                            popular paid courses (high ratings and many subscribers), popular free courses (high
+                            engagement but limited content), and unpopular paid courses (low performance, indicating
+                            potential for improvement). To automate segmentation for new courses, classification models
+                            (KNN, SVM, and Naive Bayes) were trained, achieving up to 100% accuracy—though Naive Bayes
+                            offered more stable, generalizable results. The insights gained from this project can
+                            support personalized recommendations, targeted marketing, and course content enhancement.
+                            Tools used include Python, Pandas, Scikit-learn, and Plotly.
+                        </p>
+                        <a href="https://github.com/rizqi-maulidi/Course-Segmentation-Udemy" target="_blank"
+                            class="text-[#db2777] underline mt-2 inline-block font-bold">View on GitHub</a>
+                    </div>
+
+                </div>
+            </section>
+        </div>
+
+
+        <!-- Certifications Tab Content -->
+        <div class="tab-content" id="certifications">
+            <section class="certification section mt-12 w-full max-w-4xl text-center">
+                <h2 class="section-title text-3xl font-bold text-center mb-8">
+                    All Certifications
+                </h2>
+                <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+
+                    <!-- Card 1 -->
+                    <div
+                        class="certification bg-white p-6 rounded-lg shadow-lg border border-gray-200 card flex flex-col items-center">
+                        <h3 class="text-center text-lg font-semibold mb-4 text-[#0ea5e9]">
+                            Applied Machine Learning
+                        </h3>
+                        <img alt="Applied Machine Learning" class="mx-auto mb-4 rounded-lg"
+                            src="static\Machine Learning Terapan.png" />
+                        <p class="mt-2 flex-grow">
+                            Completed 25+ hours of Dicoding courses on ML system design, project deployment, and case
+                            studies in predictive analytics, sentiment analysis, computer vision, and recommendation
+                            systems.
+                        </p>
+                        <a href="https://www.dicoding.com/certificates/L4PQEN69OPO1" target="_blank"
+                            class="text-[#db2777] underline mt-2 inline-block font-bold">View Detail</a>
+                    </div>
+
+                    <!-- Certificate 2 -->
+                    <div
+                        class="certification bg-white p-6 rounded-lg shadow-lg border border-gray-200 card flex flex-col items-center">
+                        <h3 class="text-center text-lg font-semibold mb-4 text-[#0ea5e9]">
+                            Data Analysis with Python
+                        </h3>
+                        <img alt="Data Analysis with Python" class="mx-auto mb-4 rounded-lg"
+                            src="static\Belajar Analisis Data dengan Python.png" />
+                        <p class="mt-2 flex-grow">
+                            Completed 22+ hours of Dicoding courses on data analysis fundamentals, descriptive
+                            statistics, data processing, wrangling, EDA, data visualization, and interactive dashboard
+                            development with Streamlit.
+                        </p>
+                        <a href="https://www.dicoding.com/certificates/ERZRE7ROWXYV" target="_blank"
+                            class="text-[#db2777] underline mt-2 inline-block font-bold">View Detail</a>
+                    </div>
+
+                    <!-- Certificate 3 -->
+                    <div
+                        class="certification bg-white p-6 rounded-lg shadow-lg border border-gray-200 card flex flex-col items-center">
+                        <h3 class="text-center text-lg font-semibold mb-4 text-[#0ea5e9]">
+                            Database Design & Programming with SQL
+                        </h3>
+                        <img alt="Database Design & Programming with SQL" class="mx-auto mb-4 rounded-lg"
+                            src="static\Database Design & Database Programming with SQL.png" />
+                        <p class="mt-2 flex-grow">
+                            Completed 180 hours of training in Database Design and SQL Programming through the Talent
+                            Scouting Academy - Digital Talent Scholarship 2024 (90 hours each module).
+                        </p>
+                        <a href="https://digitalent.komdigi.go.id/pelatihan/7340" target="_blank"
+                            class="text-[#db2777] underline mt-2 inline-block font-bold">View Detail</a>
+                    </div>
+
+                    <!-- Certificate 4 -->
+                    <div
+                        class="certification bg-white p-6 rounded-lg shadow-lg border border-gray-200 card flex flex-col items-center">
+                        <h3 class="text-center text-lg font-semibold mb-4 text-[#0ea5e9]">
+                            Data Processing Fundamentals
+                        </h3>
+                        <img alt="Data Processing Fundamentals" class="mx-auto mb-4 rounded-lg"
+                            src="static\fundapreprosdata.png" />
+                        <p class="mt-2 flex-grow">
+                            Completed a 60-hour training program focused on data preparation and processing using
+                            Python. Covered software engineering best practices, data storage techniques, ETL pipelines
+                            (extract, transform, load), and automation. Final project involved building a simple ETL
+                            pipeline to demonstrate end-to-end data handling skills.
+                        </p>
+                        <a href="https://www.dicoding.com/certificates/L4PQE07MOPO1" target="_blank"
+                            class="text-[#db2777] underline mt-2 inline-block font-bold">View Detail</a>
+                    </div>
+
+                    <!-- Certificate 5 -->
+                    <div
+                        class="certification bg-white p-6 rounded-lg shadow-lg border border-gray-200 card flex flex-col items-center">
+                        <h3 class="text-center text-lg font-semibold mb-4 text-[#0ea5e9]">
+                            Deep Learning Fundamentals
+                        </h3>
+                        <img alt="Deep Learning Fundamentals" class="mx-auto mb-4 rounded-lg"
+                            src="static\fundaldepplearn.png" />
+                        <p class="mt-2 flex-grow">
+                            Completed a 90-hour program on deep learning for text and image data, covering NLP, computer
+                            vision, time series, recommendation systems, and model deployment with TensorFlow and Keras.
+                            Final project: image classification model.
+                        </p>
+                        <a href="https://www.dicoding.com/certificates/72ZD5W6J6ZYW" target="_blank"
+                            class="text-[#db2777] underline mt-2 inline-block font-bold">View Detail</a>
+                    </div>
+
+                    <!-- Certificate 6 -->
+                    <div
+                        class="certification bg-white p-6 rounded-lg shadow-lg border border-gray-200 card flex flex-col items-center">
+                        <h3 class="text-center text-lg font-semibold mb-4 text-[#0ea5e9]">
+                            Basics of Artificial Intelligence (AI)
+                        </h3>
+                        <img alt="Basics of Artificial Intelligence (AI)" class="mx-auto mb-4 rounded-lg"
+                            src="static\dasarAI.png" />
+                        <p class="mt-2 flex-grow">
+                            Completed a 10-hour introductory course on Artificial Intelligence, covering the
+                            fundamentals of AI, data for AI, machine learning, and deep learning concepts. Final
+                            assessment included a comprehensive exam.
+                        </p>
+                        <a href="https://www.dicoding.com/certificates/KEXL7YL90XG2" target="_blank"
+                            class="text-[#db2777] underline mt-2 inline-block font-bold">View Detail</a>
+                    </div>
+
+                    <!-- Certificate 7 -->
+                    <div
+                        class="certification bg-white p-6 rounded-lg shadow-lg border border-gray-200 card flex flex-col items-center">
+                        <h3 class="text-center text-lg font-semibold mb-4 text-[#0ea5e9]">
+                            Git Basics with GitHub
+                        </h3>
+                        <img alt="Git Basics with GitHub" class="mx-auto mb-4 rounded-lg" src="static\git&github.png" />
+                        <p class="mt-2 flex-grow">
+                            Completed a 15-hour course on Git and GitHub for code and data management, focusing on
+                            version control, branching, collaboration, and portfolio building. Learned to work with
+                            repositories, handle pull requests, and contribute to team projects following industry
+                            standards. Final evaluation included a comprehensive exam.
+                        </p>
+                        <a href="https://www.dicoding.com/certificates/MRZMN8M8KPYQ" target="_blank"
+                            class="text-[#db2777] underline mt-2 inline-block font-bold">View Detail</a>
+                    </div>
+
+                    <!-- Certificate 8 -->
+                    <div
+                        class="certification bg-white p-6 rounded-lg shadow-lg border border-gray-200 card flex flex-col items-center">
+                        <h3 class="text-center text-lg font-semibold mb-4 text-[#0ea5e9]">
+                            Basic Structured Query Language (SQL)
+                        </h3>
+                        <img alt="Basic Structured Query Language (SQL)" class="mx-auto mb-4 rounded-lg"
+                            src="static\sqldicoding.png" />
+                        <p class="mt-2 flex-grow">
+                            Completed an 11-hour introductory course on Structured Query Language (SQL), designed for
+                            aspiring data analysts and data scientists. Covered fundamentals of databases, DBMS, data
+                            definition and manipulation (DDL & DML), and basic queries such as SELECT, INSERT, UPDATE,
+                            and DELETE. Final assessment included a comprehensive exam.
+                        </p>
+                        <a href="https://www.dicoding.com/certificates/NVP75J564XR0" target="_blank"
+                            class="text-[#db2777] underline mt-2 inline-block font-bold">View Detail</a>
+                    </div>
+
+                    <!-- Certificate 4 -->
+                    <div
+                        class="certification bg-white p-6 rounded-lg shadow-lg border border-gray-200 card flex flex-col items-center">
+                        <h3 class="text-center text-lg font-semibold mb-4 text-[#0ea5e9]">
+                            Programming Basic for Software Developer
+                        </h3>
+                        <img alt="Programming Basic for Software Developer" class="mx-auto mb-4 rounded-lg"
+                            src="static\progsoftdev.png" />
+                        <p class="mt-2 flex-grow">
+                            Completed a 9-hour beginner-level course on software development, aligned with Indonesia's
+                            occupational standards for Software Developers. Covered user and technical requirements
+                            analysis, flowchart-based planning, and basic programming using HTML, CSS, and JavaScript.
+                            Final assessment included a practical exam and software documentation project.
+                        </p>
+                        <a href="https://www.dicoding.com/certificates/NVP757VLGXR0" target="_blank"
+                            class="text-[#db2777] underline mt-2 inline-block font-bold">View Detail</a>
+                    </div>
+                </div>
+            </section>
+        </div>
+
+        <!-- Contact Tab Content -->
+        <div class="tab-content" id="contact">
+            <section class="contact section text-center mt-12 w-full max-w-4xl mx-auto">
+                <!-- Title -->
+                <h2 class="section-title text-3xl font-bold text-center mb-4">
+                    Contact
+                </h2>
+
+                <!-- Description -->
+                <p class="text-lg text-gray-700 mb-6">
+                    You can see some of my available contacts by clicking on them.
+                </p>
+
+                <!-- Contact Cards -->
+                <div class="flex flex-wrap justify-center gap-6 mt-6">
+                    <!-- GitHub Card -->
+                    <a href="https://github.com/rizqi-maulidi" target="_blank"
+                        class="flex flex-col items-center bg-white shadow-lg rounded-2xl p-6 w-40 transform transition duration-300 hover:scale-105 border border-gray-200">
+                        <i class="fab fa-github text-4xl text-[#0ea5e9] mb-2"></i>
+                        <p class="text-sm font-semibold">Check My GitHub</p>
+                    </a>
+
+                    <!-- LinkedIn Card -->
+                    <a href="https://www.linkedin.com/in/rizqi-maulidi" target="_blank"
+                        class="flex flex-col items-center bg-white shadow-lg rounded-2xl p-6 w-40 transform transition duration-300 hover:scale-105 border border-gray-200">
+                        <i class="fab fa-linkedin text-4xl text-[#0ea5e9] mb-2"></i>
+                        <p class="text-sm font-semibold">Connect on LinkedIn</p>
+                    </a>
+
+                    <!-- Email Card -->
+                    <a href="mailto:rizqimaulidi@gmail.com"
+                        class="flex flex-col items-center bg-white shadow-lg rounded-2xl p-6 w-40 transform transition duration-300 hover:scale-105 border border-gray-200">
+                        <i class="fas fa-envelope text-4xl text-[#0ea5e9] mb-2"></i>
+                        <p class="text-sm font-semibold">Send Me an Email</p>
+                    </a>
+                </div>
+            </section>
+        </div>
     </div>
 
-    <!-- Projects Tab Content -->
-    <div class="tab-content" id="projects">
-    <section class="projects section mt-12 w-full max-w-4xl text-center mx-auto">
-        <h2 class="section-title text-3xl font-bold text-center mb-8">
-        Projects
-        </h2>
-        <div class="flex flex-col gap-8">
-        
-        <!-- Adopt House -->
-        <div class="project bg-[#1a1a2e] p-6 rounded-lg shadow-lg border border-[#00d9ff] card">
-            <h3 class="text-xl font-bold mb-2 text-[#00d9ff]">
-            Adopt House
-            </h3>
-            <img alt="Adopt House"
-                class="project-image mt-2 mb-4 w-full h-[200px] rounded-lg object-contain"
-                src="static\Adopt House.png" />
-            <p>
-                Led the development of a full-stack web-based pet adoption platform as Project Manager, integrating content-based recommendation and image classification models. Coordinated collaboration across frontend, backend, and machine learning divisions as part of the Coding Camp capstone project powered by DBS Foundation.
-            </p>
-            <a href="https://github.com/capstoneadoptpet"
-            target="_blank"
-            class="text-[#ff006e] underline mt-2 inline-block font-bold">View on GitHub</a>
-        </div>
-
-        <!-- Customer Churn Prediction -->
-        <div class="project bg-[#1a1a2e] p-6 rounded-lg shadow-lg border border-[#00d9ff] card">
-            <h3 class="text-xl font-bold mb-2 text-[#00d9ff]">
-            Customer Churn Prediction
-            </h3>
-            <img alt="Customer Churn Prediction"
-                class="project-image mt-2 mb-4 w-full h-[200px] rounded-lg object-contain"
-                src="static/Customer_Churn_Prediction_Models_in_Machine_Learning.png" />
-            <p>
-            Developed a customer churn prediction system for telecommunications industry using ensemble machine learning approaches by implementing Random Forest and XGBoost algorithms with hyperparameter tuning, SMOTE for handling class imbalance, and comprehensive feature analysis, achieving 91% accuracy and 0.8843 ROC-AUC score with the Tuned Random Forest model to enable proactive customer retention strategies.
-            </p>
-            <a href="https://github.com/rizqi-maulidi/Flood-Prediction-Exercise"
-            target="_blank"
-            class="text-[#ff006e] underline mt-2 inline-block font-bold">View on GitHub</a>
-        </div>
-
-        <!-- Olist Ecommerce Analysis -->
-        <div class="project bg-[#1a1a2e] p-6 rounded-lg shadow-lg border border-[#00d9ff] card">
-            <h3 class="text-xl font-bold mb-2 text-[#00d9ff]">
-            Olist Ecommerce Analysis
-            </h3>
-            <img alt="Olist Ecommerce Analysis"
-                class="project-image mt-2 mb-4 w-full h-[200px] rounded-lg object-contain"
-                src="static\olishproject.png" />
-            <p>
-            Conducted in-depth exploratory and advanced analytics on Brazil's Olist ecommerce dataset using Python and Streamlit to generate strategic business insights on revenue, customer satisfaction, geospatial distribution, and RFM segmentation, culminating in an interactive dashboard deployment in streamlit.
-            </p>
-            <a href="https://github.com/rizqi-maulidi/-Olist-Ecommerce-Analysis"
-            target="_blank"
-            class="text-[#ff006e] underline mt-2 inline-block font-bold">View on GitHub</a>
-        </div>
-
-        <!-- Sentiment Analysis Indonesian Gojek app -->
-        <div class="project bg-[#1a1a2e] p-6 rounded-lg shadow-lg border border-[#00d9ff] card">
-            <h3 class="text-xl font-bold mb-2 text-[#00d9ff]">
-            Sentiment Analysis Indonesian Gojek app
-            </h3>
-            <img alt="Sentiment Analysis Indonesian Gojek app"
-                class="project-image mt-2 mb-4 w-full h-[200px] rounded-lg object-contain"
-                src="static\gojeksentimen.png" />
-            <p>
-            Performed sentiment analysis on Gojek app reviews scraped from Google Play Store, including exploratory data analysis, Indonesian text preprocessing, lexicon-based sentiment labeling, and training deep learning models (LSTM and Transformer) with the best model achieving 92.41% test accuracy.
-            </p>
-            <a href=https://github.com/rizqi-maulidi/Sentiment_Analysis_Gojek"
-            target="_blank"
-            class="text-[#ff006e] underline mt-2 inline-block font-bold">View on GitHub</a>
-        </div>
-
-        <!-- Study Recommendation -->
-        <div class="project bg-[#1a1a2e] p-6 rounded-lg shadow-lg border border-[#00d9ff] card">
-            <h3 class="text-xl font-bold mb-2 text-[#00d9ff]">
-            Study Recommendation
-            </h3>
-            <img alt="Study Recommendation"
-                class="project-image mt-2 mb-4 w-full h-[200px] rounded-lg object-contain"
-                src="static\studyrecom.png" />
-            <p>
-            Developed a hybrid content-based recommendation system to suggest suitable academic study fields for students by integrating normalized academic scores, extracurricular activities, and career aspirations, leveraging cosine similarity and rule-based profiling, and achieving up to 25.11% recommendation accuracy.
-            </p>
-            <a href="https://github.com/rizqi-maulidi/Recomendation-System"
-            target="_blank"
-            class="text-[#ff006e] underline mt-2 inline-block font-bold">View on GitHub</a>
-        </div>
-
-        <!-- Course Segmentation -->
-        <div class="project bg-[#1a1a2e] p-6 rounded-lg shadow-lg border border-[#00d9ff] card">
-            <h3 class="text-xl font-bold mb-2 text-[#00d9ff]">
-            Course Segmentation Based on Popularity and Course Category Prediction
-            </h3>
-            <img alt="Course Segmentation"
-                class="project-image mt-2 mb-4 w-full h-[200px] rounded-lg object-contain"
-                src="static\udemy.png" />
-            <p>
-            This project focuses on segmenting Udemy Development courses using machine learning techniques. Using KMeans clustering, 13,608 courses were grouped into three key segments: popular paid courses (high ratings and many subscribers), popular free courses (high engagement but limited content), and unpopular paid courses (low performance, indicating potential for improvement). To automate segmentation for new courses, classification models (KNN, SVM, and Naive Bayes) were trained, achieving up to 100% accuracy—though Naive Bayes offered more stable, generalizable results. The insights gained from this project can support personalized recommendations, targeted marketing, and course content enhancement. Tools used include Python, Pandas, Scikit-learn, and Plotly.
-            </p>
-            <a href="https://github.com/rizqi-maulidi/Course-Segmentation-Udemy"
-            target="_blank"
-            class="text-[#ff006e] underline mt-2 inline-block font-bold">View on GitHub</a>
-        </div>
-
-        </div>
-    </section>
-    </div>
-
-
-   <!-- Certifications Tab Content -->
-   <div class="tab-content" id="certifications">
-    <section class="certification section mt-12 w-full max-w-4xl text-center">
-        <h2 class="section-title text-3xl font-bold text-center mb-8">
-         All Certifications
-        </h2>
-        <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
-
-            <!-- Card 1 -->
-            <div class="certification bg-[#1a1a2e] p-6 rounded-lg shadow-lg border border-[#00d9ff] card flex flex-col items-center">
-                <h3 class="text-center text-lg font-semibold mb-4 text-[#00d9ff]">
-                    Applied Machine Learning
-                </h3>
-            <img alt="Applied Machine Learning" class="mx-auto mb-4 rounded-lg" src="static\Machine Learning Terapan.png"/>
-            <p class="mt-2 flex-grow">
-                Completed 25+ hours of Dicoding courses on ML system design, project deployment, and case studies in predictive analytics, sentiment analysis, computer vision, and recommendation systems.
-            </p>
-            <a href="https://www.dicoding.com/certificates/L4PQEN69OPO1" target="_blank" 
-            class="text-[#ff006e] underline mt-2 inline-block font-bold">View Detail</a>
-         </div>
-
-        <!-- Certificate 2 -->
-        <div class="certification bg-[#1a1a2e] p-6 rounded-lg shadow-lg border border-[#00d9ff] card flex flex-col items-center">
-        <h3 class="text-center text-lg font-semibold mb-4 text-[#00d9ff]">
-            Data Analysis with Python
-        </h3>
-        <img alt="Data Analysis with Python" class="mx-auto mb-4 rounded-lg" src="static\Belajar Analisis Data dengan Python.png" />
-        <p class="mt-2 flex-grow">
-            Completed 22+ hours of Dicoding courses on data analysis fundamentals, descriptive statistics, data processing, wrangling, EDA, data visualization, and interactive dashboard development with Streamlit.
-        </p>
-        <a href="https://www.dicoding.com/certificates/ERZRE7ROWXYV" target="_blank" 
-        class="text-[#ff006e] underline mt-2 inline-block font-bold">View Detail</a>
-        </div>
-
-        <!-- Certificate 3 -->
-        <div class="certification bg-[#1a1a2e] p-6 rounded-lg shadow-lg border border-[#00d9ff] card flex flex-col items-center">
-        <h3 class="text-center text-lg font-semibold mb-4 text-[#00d9ff]">
-            Database Design & Programming with SQL
-        </h3>
-        <img alt="Database Design & Programming with SQL" class="mx-auto mb-4 rounded-lg" src="static\Database Design & Database Programming with SQL.png" />
-        <p class="mt-2 flex-grow">
-            Completed 180 hours of training in Database Design and SQL Programming through the Talent Scouting Academy - Digital Talent Scholarship 2024 (90 hours each module).
-        </p>
-        <a href="https://digitalent.komdigi.go.id/pelatihan/7340" target="_blank" 
-        class="text-[#ff006e] underline mt-2 inline-block font-bold">View Detail</a>
-        </div>
-
-        <!-- Certificate 4 -->
-        <div class="certification bg-[#1a1a2e] p-6 rounded-lg shadow-lg border border-[#00d9ff] card flex flex-col items-center">
-        <h3 class="text-center text-lg font-semibold mb-4 text-[#00d9ff]">
-            Data Processing Fundamentals
-        </h3>
-        <img alt="Data Processing Fundamentals" class="mx-auto mb-4 rounded-lg" src="static\fundapreprosdata.png" />
-        <p class="mt-2 flex-grow">
-            Completed a 60-hour training program focused on data preparation and processing using Python. Covered software engineering best practices, data storage techniques, ETL pipelines (extract, transform, load), and automation. Final project involved building a simple ETL pipeline to demonstrate end-to-end data handling skills.
-        </p>
-        <a href="https://www.dicoding.com/certificates/L4PQE07MOPO1" target="_blank" 
-        class="text-[#ff006e] underline mt-2 inline-block font-bold">View Detail</a>
-        </div>
-
-        <!-- Certificate 5 -->
-        <div class="certification bg-[#1a1a2e] p-6 rounded-lg shadow-lg border border-[#00d9ff] card flex flex-col items-center">
-        <h3 class="text-center text-lg font-semibold mb-4 text-[#00d9ff]">
-            Deep Learning Fundamentals
-        </h3>
-        <img alt="Deep Learning Fundamentals" class="mx-auto mb-4 rounded-lg" src="static\fundaldepplearn.png" />
-        <p class="mt-2 flex-grow">
-            Completed a 90-hour program on deep learning for text and image data, covering NLP, computer vision, time series, recommendation systems, and model deployment with TensorFlow and Keras. Final project: image classification model.
-        </p>
-        <a href="https://www.dicoding.com/certificates/72ZD5W6J6ZYW" target="_blank" 
-        class="text-[#ff006e] underline mt-2 inline-block font-bold">View Detail</a>
-        </div>
-
-        <!-- Certificate 6 -->
-        <div class="certification bg-[#1a1a2e] p-6 rounded-lg shadow-lg border border-[#00d9ff] card flex flex-col items-center">
-        <h3 class="text-center text-lg font-semibold mb-4 text-[#00d9ff]">
-            Basics of Artificial Intelligence (AI)
-        </h3>
-        <img alt="Basics of Artificial Intelligence (AI)" class="mx-auto mb-4 rounded-lg" src="static\dasarAI.png" />
-        <p class="mt-2 flex-grow">
-            Completed a 10-hour introductory course on Artificial Intelligence, covering the fundamentals of AI, data for AI, machine learning, and deep learning concepts. Final assessment included a comprehensive exam.
-        </p>
-        <a href="https://www.dicoding.com/certificates/KEXL7YL90XG2" target="_blank" 
-        class="text-[#ff006e] underline mt-2 inline-block font-bold">View Detail</a>
-        </div>
-
-        <!-- Certificate 7 -->
-        <div class="certification bg-[#1a1a2e] p-6 rounded-lg shadow-lg border border-[#00d9ff] card flex flex-col items-center">
-        <h3 class="text-center text-lg font-semibold mb-4 text-[#00d9ff]">
-            Git Basics with GitHub
-        </h3>
-        <img alt="Git Basics with GitHub" class="mx-auto mb-4 rounded-lg" src="static\git&github.png" />
-        <p class="mt-2 flex-grow">
-            Completed a 15-hour course on Git and GitHub for code and data management, focusing on version control, branching, collaboration, and portfolio building. Learned to work with repositories, handle pull requests, and contribute to team projects following industry standards. Final evaluation included a comprehensive exam.
-        </p>
-        <a href="https://www.dicoding.com/certificates/MRZMN8M8KPYQ" target="_blank" 
-        class="text-[#ff006e] underline mt-2 inline-block font-bold">View Detail</a>
-        </div>
-
-        <!-- Certificate 8 -->
-        <div class="certification bg-[#1a1a2e] p-6 rounded-lg shadow-lg border border-[#00d9ff] card flex flex-col items-center">
-        <h3 class="text-center text-lg font-semibold mb-4 text-[#00d9ff]">
-            Basic Structured Query Language (SQL)
-        </h3>
-        <img alt="Basic Structured Query Language (SQL)" class="mx-auto mb-4 rounded-lg" src="static\sqldicoding.png" />
-        <p class="mt-2 flex-grow">
-            Completed an 11-hour introductory course on Structured Query Language (SQL), designed for aspiring data analysts and data scientists. Covered fundamentals of databases, DBMS, data definition and manipulation (DDL & DML), and basic queries such as SELECT, INSERT, UPDATE, and DELETE. Final assessment included a comprehensive exam.
-        </p>
-        <a href="https://www.dicoding.com/certificates/NVP75J564XR0" target="_blank" 
-        class="text-[#ff006e] underline mt-2 inline-block font-bold">View Detail</a>
-        </div>
-
-        <!-- Certificate 4 -->
-        <div class="certification bg-[#1a1a2e] p-6 rounded-lg shadow-lg border border-[#00d9ff] card flex flex-col items-center">
-        <h3 class="text-center text-lg font-semibold mb-4 text-[#00d9ff]">
-            Programming Basic for Software Developer
-        </h3>
-        <img alt="Programming Basic for Software Developer" class="mx-auto mb-4 rounded-lg" src="static\progsoftdev.png" />
-        <p class="mt-2 flex-grow">
-            Completed a 9-hour beginner-level course on software development, aligned with Indonesia's occupational standards for Software Developers. Covered user and technical requirements analysis, flowchart-based planning, and basic programming using HTML, CSS, and JavaScript. Final assessment included a practical exam and software documentation project.
-        </p>
-        <a href="https://www.dicoding.com/certificates/NVP757VLGXR0" target="_blank" 
-        class="text-[#ff006e] underline mt-2 inline-block font-bold">View Detail</a>
-         </div>
-        </div>
-    </section>
-   </div>
-
-    <!-- Contact Tab Content -->
-    <div class="tab-content" id="contact">
-        <section class="contact section text-center mt-12 w-full max-w-4xl mx-auto">
-            <!-- Title -->
-            <h2 class="section-title text-3xl font-bold text-center mb-4">
-                Contact
-            </h2>
-            
-            <!-- Description -->
-            <p class="text-lg text-[#e2e8f0] mb-6">
-                You can see some of my available contacts by clicking on them.
-            </p>
-
-            <!-- Contact Cards -->
-            <div class="flex flex-wrap justify-center gap-6 mt-6">
-                <!-- GitHub Card -->
-                <a href="https://github.com/rizqi-maulidi" target="_blank"
-                    class="flex flex-col items-center bg-[#1a1a2e] shadow-lg rounded-2xl p-6 w-40 transform transition duration-300 hover:scale-105 border border-[#00d9ff]">
-                    <i class="fab fa-github text-4xl text-[#00d9ff] mb-2"></i>
-                    <p class="text-sm font-semibold">Check My GitHub</p>
-                </a>
-
-                <!-- LinkedIn Card -->
-                <a href="https://www.linkedin.com/in/rizqi-maulidi" target="_blank"
-                    class="flex flex-col items-center bg-[#1a1a2e] shadow-lg rounded-2xl p-6 w-40 transform transition duration-300 hover:scale-105 border border-[#00d9ff]">
-                    <i class="fab fa-linkedin text-4xl text-[#00d9ff] mb-2"></i>
-                    <p class="text-sm font-semibold">Connect on LinkedIn</p>
-                </a>
-
-                <!-- Email Card -->
-                <a href="mailto:rizqimaulidi@gmail.com"
-                    class="flex flex-col items-center bg-[#1a1a2e] shadow-lg rounded-2xl p-6 w-40 transform transition duration-300 hover:scale-105 border border-[#00d9ff]">
-                    <i class="fas fa-envelope text-4xl text-[#00d9ff] mb-2"></i>
-                    <p class="text-sm font-semibold">Send Me an Email</p>
+    <!-- CV Modal -->
+    <div id="cvModal" class="modal">
+        <div class="modal-content">
+            <span class="modal-close" onclick="closeCVModal()">&times;</span>
+            <div class="flex justify-between items-center mb-4 mt-2">
+                <h2 class="text-2xl font-bold text-[#0ea5e9]">Curriculum Vitae</h2>
+                <a href="static/CV_Rizqi Maulidi.pdf" download="CV_Rizqi_Maulidi.pdf"
+                    class="btn-secondary px-4 py-2 rounded font-semibold transition duration-300 inline-block">
+                    <i class="fas fa-download mr-2"></i> Download PDF
                 </a>
             </div>
-        </section>
+            <iframe class="cv-iframe" src="static/CV_Rizqi Maulidi.pdf"></iframe>
+        </div>
     </div>
-  </div>
-  <!-- Particles.js -->
-  <script src="https://cdn.jsdelivr.net/particles.js/2.0.0/particles.min.js">
-</script>
-<script>
- particlesJS("particles-js", {
-          particles: {
-              number: { value: 100, density: { enable: true, value_area: 800 } },
-              color: { value: "#00d9ff" },
-              shape: { type: "circle" },
-              opacity: { value: 0.7, random: true },
-              size: { value: 4, random: true },
-              line_linked: { enable: true, distance: 120, color: "#00d9ff", opacity: 0.8, width: 2 },
-              move: { enable: true, speed: 3, direction: "none", random: false }
-          },
-          interactivity: {
-              detect_on: "canvas",
-              events: { onhover: { enable: true, mode: "grab" }, onclick: { enable: true, mode: "push" } },
-              modes: { grab: { distance: 140, line_linked: { opacity: 1 } } }
-          }
-      });
 
-      // Tab functionality
-      document.querySelectorAll('.tab-link').forEach(link => {
-          link.addEventListener('click', function() {
-              // Remove active class from all tabs and links
-              document.querySelectorAll('.tab-content').forEach(tab => {
-                  tab.classList.remove('active');
-              });
-              document.querySelectorAll('.tab-link').forEach(tabLink => {
-                  tabLink.classList.remove('active');
-              });
-              
-              // Add active class to clicked tab and corresponding content
-              this.classList.add('active');
-              document.querySelector(`#${this.dataset.tab}`).classList.add('active');
-          });
-      });
+    <!-- Particles.js -->
+    <script src="https://cdn.jsdelivr.net/particles.js/2.0.0/particles.min.js">
+    </script>
+    <script>
+        particlesJS("particles-js", {
+            particles: {
+                number: { value: 60, density: { enable: true, value_area: 800 } },
+                color: { value: "#0ea5e9" },
+                shape: { type: "circle" },
+                opacity: { value: 0.5, random: true },
+                size: { value: 5, random: true },
+                line_linked: { enable: true, distance: 150, color: "#0ea5e9", opacity: 0.3, width: 1.5 },
+                move: { enable: true, speed: 1.5, direction: "none", random: false }
+            },
+            interactivity: {
+                detect_on: "canvas",
+                events: { onhover: { enable: true, mode: "grab" }, onclick: { enable: true, mode: "push" } },
+                modes: { grab: { distance: 180, line_linked: { opacity: 0.8 } } }
+            }
+        });
 
-      // View More button functionality
-      document.querySelectorAll('.view-more-btn').forEach(button => {
-          button.addEventListener('click', function() {
-              // Remove active class from all tabs and links
-              document.querySelectorAll('.tab-content').forEach(tab => {
-                  tab.classList.remove('active');
-              });
-              document.querySelectorAll('.tab-link').forEach(tabLink => {
-                  tabLink.classList.remove('active');
-              });
-              
-              // Add active class to target tab and corresponding content
-              const targetTab = this.dataset.tab;
-              document.querySelector(`[data-tab="${targetTab}"].tab-link`).classList.add('active');
-              document.querySelector(`#${targetTab}`).classList.add('active');
-          });
-      });
-</script>
+        // Tab functionality
+        document.querySelectorAll('.tab-link').forEach(link => {
+            link.addEventListener('click', function () {
+                // Remove active class from all tabs and links
+                document.querySelectorAll('.tab-content').forEach(tab => {
+                    tab.classList.remove('active');
+                });
+                document.querySelectorAll('.tab-link').forEach(tabLink => {
+                    tabLink.classList.remove('active');
+                });
+
+                // Add active class to clicked tab and corresponding content
+                this.classList.add('active');
+                document.querySelector(`#${this.dataset.tab}`).classList.add('active');
+            });
+        });
+
+        // View More button functionality
+        document.querySelectorAll('.view-more-btn').forEach(button => {
+            button.addEventListener('click', function () {
+                // Remove active class from all tabs and links
+                document.querySelectorAll('.tab-content').forEach(tab => {
+                    tab.classList.remove('active');
+                });
+                document.querySelectorAll('.tab-link').forEach(tabLink => {
+                    tabLink.classList.remove('active');
+                });
+
+                // Add active class to target tab and corresponding content
+                const targetTab = this.dataset.tab;
+                document.querySelector(`[data-tab="${targetTab}"].tab-link`).classList.add('active');
+                document.querySelector(`#${targetTab}`).classList.add('active');
+            });
+        });
+
+        // CV Modal functionality
+        function openCVModal() {
+            document.getElementById('cvModal').style.display = 'flex';
+        }
+
+        function closeCVModal() {
+            document.getElementById('cvModal').style.display = 'none';
+        }
+
+        // Close modal when clicking outside of it
+        window.onclick = function (event) {
+            const modal = document.getElementById('cvModal');
+            if (event.target == modal) {
+                closeCVModal();
+            }
+        }
+    </script>
 </body>
+
 </html>
+
+
