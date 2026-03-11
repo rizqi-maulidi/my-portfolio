@@ -117,7 +117,7 @@
             text-decoration: none;
         }
 
-        
+
         /* Carousel Styles */
         .carousel-container {
             display: flex;
@@ -125,21 +125,28 @@
             scroll-snap-type: x mandatory;
             gap: 1.5rem;
             padding-bottom: 1rem;
-            -ms-overflow-style: none; /* IE and Edge */
-            scrollbar-width: none; /* Firefox */
+            -ms-overflow-style: none;
+            /* IE and Edge */
+            scrollbar-width: none;
+            /* Firefox */
         }
+
         .carousel-container::-webkit-scrollbar {
-            display: none; /* Chrome, Safari and Opera */
+            display: none;
+            /* Chrome, Safari and Opera */
         }
+
         .carousel-item {
             flex: 0 0 85%;
             scroll-snap-align: start;
         }
+
         @media (min-width: 768px) {
             .carousel-item {
                 flex: 0 0 45%;
             }
         }
+
         @media (min-width: 1024px) {
             .carousel-item {
                 flex: 0 0 30%;
@@ -257,23 +264,27 @@
                     View CV
                 </button>
             </section>
-                        <div class="grid grid-cols-1 md:grid-cols-2 gap-8 mt-8 w-full max-w-4xl mx-auto">
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-8 mt-8 w-full max-w-4xl mx-auto">
                 <!-- About Me Section -->
-                <section class="about-me section bg-white p-6 rounded-lg shadow-lg text-center border border-gray-200 card flex flex-col justify-center">
+                <section
+                    class="about-me section bg-white p-6 rounded-lg shadow-lg text-center border border-gray-200 card flex flex-col justify-center">
                     <h2 class="section-title text-2xl font-bold mb-4">About Me</h2>
                     <p>
-                        Passionate and results-driven data enthusiast with hands-on experience in end-to-end data projects,
+                        Passionate and results-driven data enthusiast with hands-on experience in end-to-end data
+                        projects,
                         internships, and data-focused bootcamps.
                         Proficient in Python, Pandas, NumPy, Scikit-learn, TensorFlow, SQL, and Google Colab for data
                         preprocessing, modeling, and evaluation.
                         Skilled in visualizing insights using Matplotlib, Seaborn, Streamlit, and Tableau to support
                         data-driven decision-making.
-                        Continuously learning and collaborating to deliver impactful solutions through analytical thinking
+                        Continuously learning and collaborating to deliver impactful solutions through analytical
+                        thinking
                         and machine learning.
                     </p>
                 </section>
                 <!-- Educational Background Section -->
-                <section class="education section bg-white p-6 rounded-lg shadow-lg text-center border border-gray-200 card flex flex-col justify-center">
+                <section
+                    class="education section bg-white p-6 rounded-lg shadow-lg text-center border border-gray-200 card flex flex-col justify-center">
                     <h2 class="section-title text-2xl font-bold mb-4">Educational Background</h2>
                     <p>
                         <strong class="text-[#0ea5e9]">UIN Syarif Hidayatullah Jakarta</strong><br />
@@ -324,28 +335,48 @@
                 <h2 class="section-title text-3xl font-bold text-center mb-8">Work Experience Highlight</h2>
                 <div class="carousel-container">
                     <!-- Naradata ID -->
-                    <div class="carousel-item experience bg-white p-6 rounded-lg shadow-lg border border-gray-200 card flex flex-col">
+                    <div
+                        class="carousel-item experience bg-white p-6 rounded-lg shadow-lg border border-gray-200 card flex flex-col">
                         <h3 class="text-lg font-bold mb-2 text-[#0ea5e9]">Machine Learning Engineer at Naradata ID</h3>
                         <p class="text-sm text-[#0ea5e9] mb-3 font-medium">Aug 2025 - Present</p>
-                        <img alt="Machine Learning Engineer at Naradata ID" class="experience-image mt-2 mb-2 object-contain" src="static/naradata_id_logo.jpg" style="height: 150px;" />
-                        <p class="text-sm flex-grow">Designed and implemented data pipelines to ingest and preprocess large-scale Indonesian social media data for analytics and machine learning workflows. Built a Retrieval-Augmented Generation (RAG) chatbot integrated into a web-based monitoring platform.</p>
-                        <button class="text-[#db2777] underline mt-4 inline-block font-bold cursor-pointer" onclick="document.querySelector('[data-tab=\'work-experience\'].tab-link').click();">Read More</button>
+                        <img alt="Machine Learning Engineer at Naradata ID"
+                            class="experience-image mt-2 mb-2 object-contain" src="static/naradata_id_logo.jpg"
+                            style="height: 150px;" />
+                        <p class="text-sm flex-grow">Designed and implemented data pipelines to ingest and preprocess
+                            large-scale Indonesian social media data for analytics and machine learning workflows. Built
+                            a Retrieval-Augmented Generation (RAG) chatbot integrated into a web-based monitoring
+                            platform.</p>
+                        <button class="text-[#db2777] underline mt-4 inline-block font-bold cursor-pointer"
+                            onclick="document.querySelector('[data-tab=\'work-experience\'].tab-link').click();">Read
+                            More</button>
                     </div>
                     <!-- Coding Camp -->
-                    <div class="carousel-item experience bg-white p-6 rounded-lg shadow-lg border border-gray-200 card flex flex-col">
+                    <div
+                        class="carousel-item experience bg-white p-6 rounded-lg shadow-lg border border-gray-200 card flex flex-col">
                         <h3 class="text-lg font-bold mb-2 text-[#0ea5e9]">Machine Learning Engineer</h3>
                         <p class="text-sm text-[#0ea5e9] mb-3 font-medium">Feb 2025 - Jun 2025</p>
-                        <img alt="Machine Learning Engineer" class="experience-image mt-2 mb-2 object-contain" src="static/CODINGCAMP.jpg" style="height: 150px;" />
-                        <p class="text-sm flex-grow">Completed 936 hours of training in Python, Data Analysis, SQL, Machine Learning, Deep Learning, and Deployment. Analyzed Olist Ecommerce data to uncover trends and deployed full-stack ML apps.</p>
-                        <button class="text-[#db2777] underline mt-4 inline-block font-bold cursor-pointer" onclick="document.querySelector('[data-tab=\'work-experience\'].tab-link').click();">Read More</button>
+                        <img alt="Machine Learning Engineer" class="experience-image mt-2 mb-2 object-contain"
+                            src="static/CODINGCAMP.jpg" style="height: 150px;" />
+                        <p class="text-sm flex-grow">Completed 936 hours of training in Python, Data Analysis, SQL,
+                            Machine Learning, Deep Learning, and Deployment. Analyzed Olist Ecommerce data to uncover
+                            trends and deployed full-stack ML apps.</p>
+                        <button class="text-[#db2777] underline mt-4 inline-block font-bold cursor-pointer"
+                            onclick="document.querySelector('[data-tab=\'work-experience\'].tab-link').click();">Read
+                            More</button>
                     </div>
                     <!-- Taudata -->
-                    <div class="carousel-item experience bg-white p-6 rounded-lg shadow-lg border border-gray-200 card flex flex-col">
+                    <div
+                        class="carousel-item experience bg-white p-6 rounded-lg shadow-lg border border-gray-200 card flex flex-col">
                         <h3 class="text-lg font-bold mb-2 text-[#0ea5e9]">Data Scientist</h3>
                         <p class="text-sm text-[#0ea5e9] mb-3 font-medium">Mar 2024 - Nov 2024</p>
-                        <img alt="Data Scientist" class="experience-image mt-2 mb-2 object-contain" src="static/taudata_logo.png" style="height: 150px;" />
-                        <p class="text-sm flex-grow">Worked in the Brand Monitoring division for the automotive industry. Conducted NLP project using Aspect-Based Sentiment Analysis (ABSA) and developed insightful visualizations highlighting the top car brands.</p>
-                        <button class="text-[#db2777] underline mt-4 inline-block font-bold cursor-pointer" onclick="document.querySelector('[data-tab=\'work-experience\'].tab-link').click();">Read More</button>
+                        <img alt="Data Scientist" class="experience-image mt-2 mb-2 object-contain"
+                            src="static/taudata_logo.png" style="height: 150px;" />
+                        <p class="text-sm flex-grow">Worked in the Brand Monitoring division for the automotive
+                            industry. Conducted NLP project using Aspect-Based Sentiment Analysis (ABSA) and developed
+                            insightful visualizations highlighting the top car brands.</p>
+                        <button class="text-[#db2777] underline mt-4 inline-block font-bold cursor-pointer"
+                            onclick="document.querySelector('[data-tab=\'work-experience\'].tab-link').click();">Read
+                            More</button>
                     </div>
                 </div>
             </section>
@@ -355,25 +386,44 @@
                 <h2 class="section-title text-3xl font-bold text-center mb-8">Selected Projects</h2>
                 <div class="carousel-container">
                     <!-- Project 1 -->
-                    <div class="carousel-item project bg-white p-6 rounded-lg shadow-lg border border-gray-200 card flex flex-col">
+                    <div
+                        class="carousel-item project bg-white p-6 rounded-lg shadow-lg border border-gray-200 card flex flex-col">
                         <h3 class="text-lg font-bold mb-2 text-[#0ea5e9]">Adopt House</h3>
-                        <img alt="Adopt House" class="project-image mt-2 mb-2 object-contain" src="static/Adopt House.png" style="height: 150px;" />
-                        <p class="text-sm flex-grow">Led the development of a full-stack web-based pet adoption platform as Project Manager, integrating content-based recommendation and image classification models. Coordinated collaboration across frontend, backend, and machine learning divisions.</p>
-                        <button class="text-[#db2777] underline mt-4 inline-block font-bold cursor-pointer" onclick="document.querySelector('[data-tab=\'projects\'].tab-link').click();">Read More</button>
+                        <img alt="Adopt House" class="project-image mt-2 mb-2 object-contain"
+                            src="static/Adopt House.png" style="height: 150px;" />
+                        <p class="text-sm flex-grow">Led the development of a full-stack web-based pet adoption platform
+                            as Project Manager, integrating content-based recommendation and image classification
+                            models. Coordinated collaboration across frontend, backend, and machine learning divisions.
+                        </p>
+                        <button class="text-[#db2777] underline mt-4 inline-block font-bold cursor-pointer"
+                            onclick="document.querySelector('[data-tab=\'projects\'].tab-link').click();">Read
+                            More</button>
                     </div>
                     <!-- Project 2 -->
-                    <div class="carousel-item project bg-white p-6 rounded-lg shadow-lg border border-gray-200 card flex flex-col">
+                    <div
+                        class="carousel-item project bg-white p-6 rounded-lg shadow-lg border border-gray-200 card flex flex-col">
                         <h3 class="text-lg font-bold mb-2 text-[#0ea5e9]">Customer Churn Prediction</h3>
-                        <img alt="Customer Churn Prediction" class="project-image mt-2 mb-2 object-contain" src="static/churnpreview.png" style="height: 150px;" />
-                        <p class="text-sm flex-grow">Developed a customer churn prediction system for telecommunications industry using ensemble machine learning approaches by implementing Random Forest and XGBoost algorithms with hyperparameter tuning, achieving 91% accuracy.</p>
-                        <button class="text-[#db2777] underline mt-4 inline-block font-bold cursor-pointer" onclick="document.querySelector('[data-tab=\'projects\'].tab-link').click();">Read More</button>
+                        <img alt="Customer Churn Prediction" class="project-image mt-2 mb-2 object-contain"
+                            src="static/churnpreview.png" style="height: 150px;" />
+                        <p class="text-sm flex-grow">Developed a customer churn prediction system for telecommunications
+                            industry using ensemble machine learning approaches by implementing Random Forest and
+                            XGBoost algorithms with hyperparameter tuning, achieving 91% accuracy.</p>
+                        <button class="text-[#db2777] underline mt-4 inline-block font-bold cursor-pointer"
+                            onclick="document.querySelector('[data-tab=\'projects\'].tab-link').click();">Read
+                            More</button>
                     </div>
                     <!-- Project 3 -->
-                    <div class="carousel-item project bg-white p-6 rounded-lg shadow-lg border border-gray-200 card flex flex-col">
+                    <div
+                        class="carousel-item project bg-white p-6 rounded-lg shadow-lg border border-gray-200 card flex flex-col">
                         <h3 class="text-lg font-bold mb-2 text-[#0ea5e9]">Olist Ecommerce Analysis</h3>
-                        <img alt="Olist Ecommerce Analysis" class="project-image mt-2 mb-2 object-contain" src="static/olishprew.png" style="height: 150px;" />
-                        <p class="text-sm flex-grow">Conducted in-depth exploratory and advanced analytics on Brazil's Olist ecommerce dataset using Python and Streamlit to generate strategic business insights on revenue, customer satisfaction, and RFM segmentation.</p>
-                        <button class="text-[#db2777] underline mt-4 inline-block font-bold cursor-pointer" onclick="document.querySelector('[data-tab=\'projects\'].tab-link').click();">Read More</button>
+                        <img alt="Olist Ecommerce Analysis" class="project-image mt-2 mb-2 object-contain"
+                            src="static/olishprew.png" style="height: 150px;" />
+                        <p class="text-sm flex-grow">Conducted in-depth exploratory and advanced analytics on Brazil's
+                            Olist ecommerce dataset using Python and Streamlit to generate strategic business insights
+                            on revenue, customer satisfaction, and RFM segmentation.</p>
+                        <button class="text-[#db2777] underline mt-4 inline-block font-bold cursor-pointer"
+                            onclick="document.querySelector('[data-tab=\'projects\'].tab-link').click();">Read
+                            More</button>
                     </div>
                 </div>
             </section>
@@ -414,6 +464,8 @@
                             <li>• Collaborated with cross-functional teams including analysts and engineers to translate
                                 business requirements into data-driven machine learning solutions.</li>
                         </ul>
+                        <a href="https://www.linkedin.com/company/naradata-id/posts/?feedView=all" target="_blank"
+                            class="text-[#db2777] underline mt-2 inline-block font-bold">View Detail</a>
                     </div>
 
                     <!-- Machine Learning Engineer Coding Camp 2025 powered by DBS Foundation -->
@@ -946,5 +998,3 @@
 </body>
 
 </html>
-
-
