@@ -897,8 +897,11 @@ body.hovering .cursor-follower {
     }
     .title { font-size: 3rem; }
     .about-content {
-        grid-template-columns: 1fr;
-        padding: 1.5rem; /* Reduce padding on mobile */
+        display: flex;
+        flex-direction: column;
+        width: 100%;
+        box-sizing: border-box;
+        padding: 1.2rem; /* Reduce padding on mobile */
         word-break: break-word; /* Prevent text from overflowing */
         overflow-wrap: break-word;
     }
@@ -906,7 +909,9 @@ body.hovering .cursor-follower {
         font-size: 1rem;
     }
     .stats-grid {
-        grid-template-columns: 1fr; /* Stack stats on very small screens */
+        display: flex;
+        flex-direction: column;
+        width: 100%;
         gap: 1rem;
     }
     .container {
