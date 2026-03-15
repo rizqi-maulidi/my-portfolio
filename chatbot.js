@@ -93,6 +93,10 @@ NLP: Sentiment Analysis, ABSA, BERT, LSTM, Transformer
 Email: rizqimaulidi@gmail.com
 LinkedIn: https://www.linkedin.com/in/rizqi-maulidi
 GitHub: https://github.com/rizqi-maulidi
+
+=== CV / RESUME ===
+Rizqi Maulidi's CV is available as a PDF document.
+CV Download Link: static/CV_Rizqi Maulidi.pdf
 `;
 
 // ============================================
@@ -109,6 +113,7 @@ RULES:
 4. Use emojis sparingly to keep it friendly.
 5. When mentioning projects or links, include the GitHub URLs if available.
 6. Format responses nicely with line breaks for readability.
+7. When the user asks for CV, resume, or curriculum vitae, ALWAYS include this exact text in your response: [CV_DOWNLOAD] — this is a special token that will be replaced by a CV preview widget.
 
 KNOWLEDGE BASE:
 ${KNOWLEDGE_BASE}`;
@@ -310,6 +315,24 @@ function escapeHtml(text) {
 }
 
 function formatBotMessage(text) {
+    // Replace CV token with interactive card
+    if (text.includes('[CV_DOWNLOAD]')) {
+        const cvCard = `
+            <div style="margin-top: 0.75rem; background: var(--gradient-primary); border-radius: 12px; padding: 1rem; color: white;">
+                <div style="display: flex; align-items: center; gap: 0.5rem; margin-bottom: 0.75rem;">
+                    <i class="fas fa-file-pdf" style="font-size: 1.5rem;"></i>
+                    <div>
+                        <div style="font-weight: 700; font-size: 0.9rem;">CV_Rizqi_Maulidi.pdf</div>
+                        <div style="font-size: 0.7rem; opacity: 0.85;">Curriculum Vitae</div>
+                    </div>
+                </div>
+                <div style="display: flex; gap: 0.5rem;">
+                    <a href="static/CV_Rizqi Maulidi.pdf" target="_blank" style="flex: 1; text-align: center; padding: 0.5rem; background: rgba(255,255,255,0.2); border-radius: 8px; color: white; font-weight: 600; font-size: 0.8rem; text-decoration: none; cursor: pointer;"><i class="fas fa-eye"></i> Preview</a>
+                    <a href="static/CV_Rizqi Maulidi.pdf" download="CV_Rizqi_Maulidi.pdf" style="flex: 1; text-align: center; padding: 0.5rem; background: rgba(255,255,255,0.2); border-radius: 8px; color: white; font-weight: 600; font-size: 0.8rem; text-decoration: none; cursor: pointer;"><i class="fas fa-download"></i> Download</a>
+                </div>
+            </div>`;
+        text = text.replace(/\[CV_DOWNLOAD\]/g, cvCard);
+    }
     // Convert **bold** to <strong>
     text = text.replace(/\*\*(.*?)\*\*/g, '<strong>$1</strong>');
     // Convert *italic* to <em>
