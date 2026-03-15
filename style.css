@@ -898,6 +898,22 @@ body.hovering .cursor-follower {
     .title { font-size: 3rem; }
     .about-content {
         grid-template-columns: 1fr;
+        padding: 1.5rem; /* Reduce padding on mobile */
+        word-break: break-word; /* Prevent text from overflowing */
+        overflow-wrap: break-word;
+    }
+    .about-text p {
+        font-size: 1rem;
+    }
+    .stats-grid {
+        grid-template-columns: 1fr; /* Stack stats on very small screens */
+        gap: 1rem;
+    }
+    .container {
+        padding: 0 1rem; /* Reduce container padding on mobile */
+    }
+    .glass-panel {
+        padding: 1.5rem; /* Reduce glass panel padding on mobile */
     }
     .cursor, .cursor-follower {
         display: none; /* Disable custom cursor on mobile */
